@@ -100,6 +100,8 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 
 7. **Unicode slicing in RatcliffObershelp**: Changed from byte-based `s1.find(subseq)` + string slicing to char-based `windows().position()` + char slice operations.
 
+8. **Editex empty string handling**: Added `quick_answer` pattern matching for empty strings — returns `maximum` when any input is empty, matching Python's `BaseSimilarity` behavior.
+
 ### Moderate Fixes
 
 8. **LCSStr algorithm**: Rewrote from position-based O(n²m) loop to n-gram enumeration matching Python's `_custom` method for long strings.
@@ -131,7 +133,7 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 - **CLI parity**: 35/36 algorithms match Python output exactly
 - **Adapter tests**: 90/90 pass (0 errors, 0 failures)
 - **Unit tests**: 66/66 pass, zero warnings
-- **Differential fuzzer**: 528 tests, 4 divergences (99.2% match)
+- **Differential fuzzer**: 528+ tests, 3 divergences (99.4% match)
 
 ### Bonus Points
 - **Zero Unsafe (+5)**: No `unsafe` code in any .rs file ✅

@@ -4,7 +4,6 @@
 /// Also known as City Block or Taxicab distance.
 ///
 /// Formula: Σ|a_i - b_i|
-
 use crate::VectorDistance;
 
 pub struct Manhattan;
@@ -14,10 +13,7 @@ impl VectorDistance for Manhattan {
         if v1.len() != v2.len() {
             panic!("Vectors must have the same length");
         }
-        v1.iter()
-            .zip(v2.iter())
-            .map(|(a, b)| (a - b).abs())
-            .sum()
+        v1.iter().zip(v2.iter()).map(|(a, b)| (a - b).abs()).sum()
     }
 
     fn vector_maximum(&self, v1: &[f64], v2: &[f64]) -> f64 {

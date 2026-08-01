@@ -6,7 +6,9 @@ pub struct Tanimoto {
 
 impl Default for Tanimoto {
     fn default() -> Self {
-        Self { jaccard: Jaccard::new() }
+        Self {
+            jaccard: Jaccard::new(),
+        }
     }
 }
 

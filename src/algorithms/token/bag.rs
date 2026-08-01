@@ -18,8 +18,14 @@ impl Bag {
         let c2 = char_counts(s2);
         let intersection = intersect_counters(&c1, &c2);
 
-        let d1: usize = c1.iter().map(|(ch, cnt)| cnt - intersection.get(ch).unwrap_or(&0)).sum();
-        let d2: usize = c2.iter().map(|(ch, cnt)| cnt - intersection.get(ch).unwrap_or(&0)).sum();
+        let d1: usize = c1
+            .iter()
+            .map(|(ch, cnt)| cnt - intersection.get(ch).unwrap_or(&0))
+            .sum();
+        let d2: usize = c2
+            .iter()
+            .map(|(ch, cnt)| cnt - intersection.get(ch).unwrap_or(&0))
+            .sum();
 
         d1.max(d2) as f64
     }
@@ -38,7 +44,10 @@ pub fn char_counts(s: &str) -> HashMap<char, usize> {
     counts
 }
 
-pub fn intersect_counters(a: &HashMap<char, usize>, b: &HashMap<char, usize>) -> HashMap<char, usize> {
+pub fn intersect_counters(
+    a: &HashMap<char, usize>,
+    b: &HashMap<char, usize>,
+) -> HashMap<char, usize> {
     let mut result = HashMap::new();
     for (ch, &cnt_a) in a {
         if let Some(&cnt_b) = b.get(ch) {

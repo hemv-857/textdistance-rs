@@ -86,7 +86,10 @@ fn main() {
         Commands::DamerauLevenshtein { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
             let c2: Vec<char> = s2.chars().collect();
-            println!("{}", edit::damerau_levenshtein::DamerauLevenshtein::new().distance(&c1, &c2));
+            println!(
+                "{}",
+                edit::damerau_levenshtein::DamerauLevenshtein::new().distance(&c1, &c2)
+            );
         }
         Commands::Jaro { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
@@ -96,7 +99,10 @@ fn main() {
         Commands::JaroWinkler { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
             let c2: Vec<char> = s2.chars().collect();
-            println!("{}", edit::jaro_winkler::JaroWinkler::new().similarity(&c1, &c2));
+            println!(
+                "{}",
+                edit::jaro_winkler::JaroWinkler::new().similarity(&c1, &c2)
+            );
         }
         Commands::StrCmp95 { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
@@ -111,12 +117,18 @@ fn main() {
         Commands::NeedlemanWunsch { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
             let c2: Vec<char> = s2.chars().collect();
-            println!("{}", edit::needleman_wunsch::NeedlemanWunsch::new().similarity(&c1, &c2));
+            println!(
+                "{}",
+                edit::needleman_wunsch::NeedlemanWunsch::new().similarity(&c1, &c2)
+            );
         }
         Commands::SmithWaterman { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
             let c2: Vec<char> = s2.chars().collect();
-            println!("{}", edit::smith_waterman::SmithWaterman::new().similarity(&c1, &c2));
+            println!(
+                "{}",
+                edit::smith_waterman::SmithWaterman::new().similarity(&c1, &c2)
+            );
         }
         Commands::Gotoh { s1, s2 } => {
             let c1: Vec<char> = s1.chars().collect();
@@ -142,7 +154,10 @@ fn main() {
             println!("{}", token::tanimoto::Tanimoto::new().similarity(&s1, &s2));
         }
         Commands::MongeElkan { s1, s2 } => {
-            println!("{}", token::monge_elkan::MongeElkan::new().similarity(&s1, &s2));
+            println!(
+                "{}",
+                token::monge_elkan::MongeElkan::new().similarity(&s1, &s2)
+            );
         }
         Commands::Bag { s1, s2 } => {
             println!("{}", token::bag::Bag::new().distance(&s1, &s2));
@@ -154,7 +169,10 @@ fn main() {
             println!("{}", seq::lcsstr::LCSStr::new().similarity(&s1, &s2));
         }
         Commands::RatcliffObershelp { s1, s2 } => {
-            println!("{}", seq::ratcliff_obershelp::RatcliffObershelp::new().similarity(&s1, &s2));
+            println!(
+                "{}",
+                seq::ratcliff_obershelp::RatcliffObershelp::new().similarity(&s1, &s2)
+            );
         }
         Commands::Prefix { s1, s2 } => {
             println!("{}", simple::prefix::Prefix::new().similarity(&s1, &s2));
@@ -178,28 +196,46 @@ fn main() {
             println!("{}", phonetic::editex::Editex::new().distance(&s1, &s2));
         }
         Commands::ArithNcd { s1, s2 } => {
-            println!("{}", compression::arith_ncd::ArithNCD::new().distance(&s1, &s2));
+            println!(
+                "{}",
+                compression::arith_ncd::ArithNCD::new().distance(&s1, &s2)
+            );
         }
         Commands::RleNcd { s1, s2 } => {
             println!("{}", compression::rle_ncd::RLENCD::new().distance(&s1, &s2));
         }
         Commands::BwtrleNcd { s1, s2 } => {
-            println!("{}", compression::bwtrle_ncd::BWTRLENCD::new().distance(&s1, &s2));
+            println!(
+                "{}",
+                compression::bwtrle_ncd::BWTRLENCD::new().distance(&s1, &s2)
+            );
         }
         Commands::SqrtNcd { s1, s2 } => {
-            println!("{}", compression::sqrt_ncd::SqrtNCD::new().distance(&s1, &s2));
+            println!(
+                "{}",
+                compression::sqrt_ncd::SqrtNCD::new().distance(&s1, &s2)
+            );
         }
         Commands::EntropyNcd { s1, s2 } => {
-            println!("{}", compression::entropy_ncd::EntropyNCD::new().distance(&s1, &s2));
+            println!(
+                "{}",
+                compression::entropy_ncd::EntropyNCD::new().distance(&s1, &s2)
+            );
         }
         Commands::Bz2Ncd { s1, s2 } => {
             println!("{}", compression::bz2_ncd::BZ2NCD::new().distance(&s1, &s2));
         }
         Commands::LzmaNcd { s1, s2 } => {
-            println!("{}", compression::lzma_ncd::LZMANCD::new().distance(&s1, &s2));
+            println!(
+                "{}",
+                compression::lzma_ncd::LZMANCD::new().distance(&s1, &s2)
+            );
         }
         Commands::ZlibNcd { s1, s2 } => {
-            println!("{}", compression::zlib_ncd::ZLIBNCD::new().distance(&s1, &s2));
+            println!(
+                "{}",
+                compression::zlib_ncd::ZLIBNCD::new().distance(&s1, &s2)
+            );
         }
     }
 }

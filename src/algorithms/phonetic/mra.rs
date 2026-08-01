@@ -19,7 +19,11 @@ impl MRA {
         let vowels = ['A', 'E', 'I', 'O', 'U'];
 
         let first = upper.chars().next().unwrap();
-        let rest: String = upper.chars().skip(1).filter(|c| !vowels.contains(c)).collect();
+        let rest: String = upper
+            .chars()
+            .skip(1)
+            .filter(|c| !vowels.contains(c))
+            .collect();
 
         // Remove consecutive duplicates (like Unix uniq)
         let mut deduped = String::new();
@@ -34,7 +38,7 @@ impl MRA {
         if deduped.chars().count() > 6 {
             let chars: Vec<char> = deduped.chars().collect();
             let prefix: String = chars[..3].iter().collect();
-            let suffix: String = chars[chars.len()-3..].iter().collect();
+            let suffix: String = chars[chars.len() - 3..].iter().collect();
             format!("{}{}", prefix, suffix)
         } else {
             deduped
@@ -62,6 +66,7 @@ impl MRA {
         mra1.len().max(mra2.len()) as f64
     }
 
+    #[allow(clippy::needless_range_loop)]
     fn call(&self, s1: &str, s2: &str) -> f64 {
         if s1.is_empty() || s2.is_empty() {
             return 0.0;
@@ -103,7 +108,9 @@ impl MRA {
             // Transpose new_seqs and rebuild sequences
             let transposed: Vec<Vec<char>> = if !new_seqs.is_empty() {
                 let inner_len = new_seqs[0].len();
-                (0..inner_len).map(|i| new_seqs.iter().map(|s| s[i]).collect()).collect()
+                (0..inner_len)
+                    .map(|i| new_seqs.iter().map(|s| s[i]).collect())
+                    .collect()
             } else {
                 Vec::new()
             };
@@ -154,4 +161,3 @@ mod tests {
         assert!((d - 2.0).abs() < 1e-10, "got {}", d);
     }
 }
-

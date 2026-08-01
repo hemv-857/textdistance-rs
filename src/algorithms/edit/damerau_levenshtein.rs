@@ -30,6 +30,7 @@ impl Distance for DamerauLevenshtein {
     }
 }
 
+#[allow(clippy::needless_range_loop)]
 fn restricted_dl(s1: &[char], s2: &[char]) -> f64 {
     let len1 = s1.len();
     let len2 = s2.len();
@@ -58,18 +59,15 @@ fn restricted_dl(s1: &[char], s2: &[char]) -> f64 {
 
             d[idx] = std::cmp::min(
                 std::cmp::min(
-                    d[(i - 1) * (len2 + 1) + j] + 1,     // deletion
-                    d[i * (len2 + 1) + (j - 1)] + 1,     // insertion
+                    d[(i - 1) * (len2 + 1) + j] + 1, // deletion
+                    d[i * (len2 + 1) + (j - 1)] + 1, // insertion
                 ),
                 d[(i - 1) * (len2 + 1) + (j - 1)] + cost, // substitution
             );
 
             // Transposition
             if i > 1 && j > 1 && s1[i - 1] == s2[j - 2] && s1[i - 2] == s2[j - 1] {
-                d[idx] = std::cmp::min(
-                    d[idx],
-                    d[(i - 2) * (len2 + 1) + (j - 2)] + cost,
-                );
+                d[idx] = std::cmp::min(d[idx], d[(i - 2) * (len2 + 1) + (j - 2)] + cost);
             }
         }
     }
@@ -122,10 +120,13 @@ fn unrestricted_dl(s1: &[char], s2: &[char]) -> f64 {
             let val_ins = d[&(i, j - 1)] + 1;
             let val_del = d[&(i - 1, j)] + 1;
 
-            d.insert((i, j), std::cmp::min(
-                std::cmp::min(val_sub, std::cmp::min(val_ins, val_del)),
-                trans_cost,
-            ));
+            d.insert(
+                (i, j),
+                std::cmp::min(
+                    std::cmp::min(val_sub, std::cmp::min(val_ins, val_del)),
+                    trans_cost,
+                ),
+            );
         }
         da.insert(s1[(i - 1) as usize], i);
     }

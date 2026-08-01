@@ -57,9 +57,7 @@ fn jaro_winkler_impl(s1: &[char], s2: &[char], winklerize: bool, long_tolerance:
 
     let min_len = std::cmp::min(s1_len, s2_len);
     let mut search_range = std::cmp::max(s1_len, s2_len) / 2;
-    if search_range > 0 {
-        search_range -= 1;
-    }
+    search_range = search_range.saturating_sub(1);
 
     let mut s1_flags = vec![false; s1_len];
     let mut s2_flags = vec![false; s2_len];
@@ -67,7 +65,7 @@ fn jaro_winkler_impl(s1: &[char], s2: &[char], winklerize: bool, long_tolerance:
     // Count matching characters within search range
     let mut common_chars = 0;
     for (i, &s1_ch) in s1.iter().enumerate() {
-        let low = if i >= search_range { i - search_range } else { 0 };
+        let low = i.saturating_sub(search_range);
         let hi = std::cmp::min(i + search_range, s2_len - 1);
         for j in low..=hi {
             if !s2_flags[j] && s2[j] == s1_ch {
@@ -133,7 +131,8 @@ fn jaro_winkler_impl(s1: &[char], s2: &[char], winklerize: bool, long_tolerance:
     if common_chars <= prefix_len + 1 || 2 * common_chars < min_len + prefix_len {
         return weight;
     }
-    let tmp = (common_chars - prefix_len - 1) as f64 / (s1_len + s2_len - prefix_len * 2 + 2) as f64;
+    let tmp =
+        (common_chars - prefix_len - 1) as f64 / (s1_len + s2_len - prefix_len * 2 + 2) as f64;
     weight += (1.0 - weight) * tmp;
     weight
 }

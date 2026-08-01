@@ -30,6 +30,7 @@ impl Similarity for NeedlemanWunsch {
     }
 }
 
+#[allow(clippy::needless_range_loop)]
 fn nw_impl(s1: &[char], s2: &[char], gap_cost: f64) -> f64 {
     let len1 = s1.len();
     let len2 = s2.len();

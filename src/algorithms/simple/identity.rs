@@ -12,11 +12,19 @@ impl Identity {
     }
 
     pub fn similarity(&self, s1: &str, s2: &str) -> f64 {
-        if s1 == s2 { 1.0 } else { 0.0 }
+        if s1 == s2 {
+            1.0
+        } else {
+            0.0
+        }
     }
 
     pub fn distance(&self, s1: &str, s2: &str) -> f64 {
-        if s1 == s2 { 0.0 } else { 1.0 }
+        if s1 == s2 {
+            0.0
+        } else {
+            1.0
+        }
     }
 }
 

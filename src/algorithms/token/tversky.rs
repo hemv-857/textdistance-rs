@@ -1,4 +1,4 @@
-use super::bag::{char_counts, intersect_counters, count_sum};
+use super::bag::{char_counts, count_sum, intersect_counters};
 
 pub struct Tversky {
     pub alpha: f64,
@@ -7,7 +7,10 @@ pub struct Tversky {
 
 impl Default for Tversky {
     fn default() -> Self {
-        Self { alpha: 1.0, beta: 1.0 }
+        Self {
+            alpha: 1.0,
+            beta: 1.0,
+        }
     }
 }
 

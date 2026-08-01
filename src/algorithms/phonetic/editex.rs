@@ -43,9 +43,10 @@ impl Editex {
     }
 
     pub fn with_local(local: bool) -> Self {
-        let mut e = Self::default();
-        e.local = local;
-        e
+        Self {
+            local,
+            ..Default::default()
+        }
     }
 
     fn in_grouped(&self, ch: char) -> bool {
@@ -57,7 +58,9 @@ impl Editex {
     }
 
     fn same_group(&self, c1: char, c2: char) -> bool {
-        self.groups.iter().any(|g| g.contains(&c1) && g.contains(&c2))
+        self.groups
+            .iter()
+            .any(|g| g.contains(&c1) && g.contains(&c2))
     }
 
     fn r_cost(&self, c1: char, c2: char) -> i64 {
@@ -80,10 +83,24 @@ impl Editex {
         self.r_cost(c1, c2)
     }
 
+    pub fn maximum(&self, s1: &str, s2: &str) -> i64 {
+        (s1.chars().count().max(s2.chars().count()) * self.mismatch_cost as usize) as i64
+    }
+
     pub fn distance(&self, s1: &str, s2: &str) -> i64 {
-        let max_length = (s1.chars().count().max(s2.chars().count()) * self.mismatch_cost as usize) as i64;
-        let s1_upper: Vec<char> = std::iter::once(' ').chain(s1.to_uppercase().chars()).collect();
-        let s2_upper: Vec<char> = std::iter::once(' ').chain(s2.to_uppercase().chars()).collect();
+        if s1 == s2 {
+            return 0;
+        }
+        if s1.is_empty() || s2.is_empty() {
+            return self.maximum(s1, s2);
+        }
+        let max_length = self.maximum(s1, s2);
+        let s1_upper: Vec<char> = std::iter::once(' ')
+            .chain(s1.to_uppercase().chars())
+            .collect();
+        let s2_upper: Vec<char> = std::iter::once(' ')
+            .chain(s2.to_uppercase().chars())
+            .collect();
         let len1 = s1_upper.len();
         let len2 = s2_upper.len();
 
@@ -115,7 +132,8 @@ impl Editex {
     }
 
     pub fn similarity(&self, s1: &str, s2: &str) -> f64 {
-        let max_len = (s1.chars().count().max(s2.chars().count()) * self.mismatch_cost as usize) as f64;
+        let max_len =
+            (s1.chars().count().max(s2.chars().count()) * self.mismatch_cost as usize) as f64;
         max_len - self.distance(s1, s2) as f64
     }
 }

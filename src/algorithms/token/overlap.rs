@@ -1,4 +1,4 @@
-use super::bag::{char_counts, intersect_counters, count_sum};
+use super::bag::{char_counts, count_sum, intersect_counters};
 
 pub struct Overlap;
 

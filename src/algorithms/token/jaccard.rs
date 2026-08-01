@@ -1,4 +1,4 @@
-use super::bag::{char_counts, intersect_counters, union_counters, count_sum};
+use super::bag::{char_counts, count_sum, intersect_counters, union_counters};
 
 pub struct Jaccard;
 

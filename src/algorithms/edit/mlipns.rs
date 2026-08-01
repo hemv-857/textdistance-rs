@@ -1,5 +1,5 @@
-use crate::{Similarity, Distance};
 use super::hamming::Hamming;
+use crate::{Distance, Similarity};
 
 pub struct MLIPNS {
     pub threshold: f64,

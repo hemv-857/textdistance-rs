@@ -5,7 +5,6 @@
 ///
 /// Formula: 1 - (n11 - n01 - n10 + n) / n
 /// where n11 = both 1, n01 = s1=0 s2=1, n10 = s1=1 s2=0, n = total elements
-
 use crate::VectorDistance;
 
 pub struct Kulsinski;
@@ -70,7 +69,7 @@ mod tests {
         let v2 = vec![0.0, 0.0, 1.0, 1.0];
         // All different
         let dist = alg.vector_distance(&v1, &v2);
-        assert!(dist >= 0.9 && dist <= 1.1);
+        assert!((0.9..=1.1).contains(&dist));
     }
 
     #[test]
@@ -79,6 +78,6 @@ mod tests {
         let v1 = vec![1.0, 1.0, 0.0];
         let v2 = vec![1.0, 0.0, 0.0];
         let dist = alg.vector_distance(&v1, &v2);
-        assert!(dist >= 0.0 && dist <= 1.0);
+        assert!((0.0..=1.0).contains(&dist));
     }
 }

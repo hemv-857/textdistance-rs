@@ -4,7 +4,6 @@
 /// Correlation distance is defined as 1 - correlation coefficient.
 ///
 /// Formula: 1 - (Σ(a_i - mean_a)(b_i - mean_b)) / (std_a * std_b * n)
-
 use crate::VectorDistance;
 
 pub struct Correlation;

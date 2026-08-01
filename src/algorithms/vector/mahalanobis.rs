@@ -7,7 +7,6 @@
 /// where S is the covariance matrix.
 ///
 /// Falls back to Euclidean if no inverse covariance matrix is provided.
-
 use crate::VectorDistance;
 
 pub struct Mahalanobis {
@@ -72,6 +71,7 @@ fn mat_vec_mul(mat: &[Vec<f64>], vec: &[f64]) -> Vec<f64> {
 }
 
 /// Compute covariance matrix from a set of vectors
+#[allow(clippy::needless_range_loop)]
 pub fn covariance_matrix(vectors: &[Vec<f64>]) -> Option<Vec<Vec<f64>>> {
     if vectors.is_empty() {
         return None;
@@ -110,6 +110,7 @@ pub fn covariance_matrix(vectors: &[Vec<f64>]) -> Option<Vec<Vec<f64>>> {
 }
 
 /// Compute inverse of a matrix using Gaussian elimination
+#[allow(clippy::needless_range_loop)]
 pub fn matrix_inverse(mat: &[Vec<f64>]) -> Option<Vec<Vec<f64>>> {
     let n = mat.len();
     if n == 0 || mat[0].len() != n {
@@ -192,10 +193,26 @@ mod tests {
         let mat = vec![vec![2.0, 1.0], vec![1.0, 3.0]];
         let inv = matrix_inverse(&mat).unwrap();
         // Check A * A^-1 ≈ I by multiplying row by column
-        let r0c0: f64 = mat[0].iter().zip(inv.iter().map(|r| r[0])).map(|(a, b)| a * b).sum();
-        let r0c1: f64 = mat[0].iter().zip(inv.iter().map(|r| r[1])).map(|(a, b)| a * b).sum();
-        let r1c0: f64 = mat[1].iter().zip(inv.iter().map(|r| r[0])).map(|(a, b)| a * b).sum();
-        let r1c1: f64 = mat[1].iter().zip(inv.iter().map(|r| r[1])).map(|(a, b)| a * b).sum();
+        let r0c0: f64 = mat[0]
+            .iter()
+            .zip(inv.iter().map(|r| r[0]))
+            .map(|(a, b)| a * b)
+            .sum();
+        let r0c1: f64 = mat[0]
+            .iter()
+            .zip(inv.iter().map(|r| r[1]))
+            .map(|(a, b)| a * b)
+            .sum();
+        let r1c0: f64 = mat[1]
+            .iter()
+            .zip(inv.iter().map(|r| r[0]))
+            .map(|(a, b)| a * b)
+            .sum();
+        let r1c1: f64 = mat[1]
+            .iter()
+            .zip(inv.iter().map(|r| r[1]))
+            .map(|(a, b)| a * b)
+            .sum();
         assert!((r0c0 - 1.0).abs() < 1e-10);
         assert!((r0c1).abs() < 1e-10);
         assert!((r1c0).abs() < 1e-10);

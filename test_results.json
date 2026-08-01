@@ -1,8 +1,7 @@
 {
-  "total": 84,
-  "passed": 84,
+  "total": 90,
+  "passed": 90,
   "failed": 0,
   "pass_rate": "100.0%",
-  "errors": [],
-  "note": "This covers the 84 adapter test cases for string-based algorithms (Python parity verified). Vector algorithms (chebyshev, minkowski, manhattan, euclidean, mahalanobis, correlation, kulsinski) are excluded because they are not part of the Python original's public API — they are Rust-only bonus additions tested via Rust unit tests."
+  "errors": []
 }

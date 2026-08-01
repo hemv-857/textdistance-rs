@@ -76,15 +76,15 @@ fn gotoh_impl(s1: &[char], s2: &[char], gap_open: f64, gap_ext: f64) -> f64 {
                 .max(p_mat[i - 1][j - 1] + sim_val)
                 .max(q_mat[i - 1][j - 1] + sim_val);
 
-            p_mat[i][j] = (d_mat[i - 1][j] - gap_open)
-                .max(p_mat[i - 1][j] - gap_ext);
+            p_mat[i][j] = (d_mat[i - 1][j] - gap_open).max(p_mat[i - 1][j] - gap_ext);
 
-            q_mat[i][j] = (d_mat[i][j - 1] - gap_open)
-                .max(q_mat[i][j - 1] - gap_ext);
+            q_mat[i][j] = (d_mat[i][j - 1] - gap_open).max(q_mat[i][j - 1] - gap_ext);
         }
     }
 
-    d_mat[len1][len2].max(p_mat[len1][len2]).max(q_mat[len1][len2])
+    d_mat[len1][len2]
+        .max(p_mat[len1][len2])
+        .max(q_mat[len1][len2])
 }
 
 pub fn similarity_str(s1: &str, s2: &str) -> f64 {

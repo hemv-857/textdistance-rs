@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use crate::Similarity;
+use std::collections::HashMap;
 
 pub struct StrCmp95 {
     pub long_strings: bool,
@@ -7,7 +7,9 @@ pub struct StrCmp95 {
 
 impl StrCmp95 {
     pub fn new() -> Self {
-        Self { long_strings: false }
+        Self {
+            long_strings: false,
+        }
     }
 }
 
@@ -28,12 +30,42 @@ impl Similarity for StrCmp95 {
 }
 
 const SP_MX: &[(&str, &str)] = &[
-    ("A", "E"), ("A", "I"), ("A", "O"), ("A", "U"), ("B", "V"), ("E", "I"),
-    ("E", "O"), ("E", "U"), ("I", "O"), ("I", "U"), ("O", "U"), ("I", "Y"),
-    ("E", "Y"), ("C", "G"), ("E", "F"), ("W", "U"), ("W", "V"), ("X", "K"),
-    ("S", "Z"), ("X", "S"), ("Q", "C"), ("U", "V"), ("M", "N"), ("L", "I"),
-    ("Q", "O"), ("P", "R"), ("I", "J"), ("2", "Z"), ("5", "S"), ("8", "B"),
-    ("1", "I"), ("1", "L"), ("0", "O"), ("0", "Q"), ("C", "K"), ("G", "J"),
+    ("A", "E"),
+    ("A", "I"),
+    ("A", "O"),
+    ("A", "U"),
+    ("B", "V"),
+    ("E", "I"),
+    ("E", "O"),
+    ("E", "U"),
+    ("I", "O"),
+    ("I", "U"),
+    ("O", "U"),
+    ("I", "Y"),
+    ("E", "Y"),
+    ("C", "G"),
+    ("E", "F"),
+    ("W", "U"),
+    ("W", "V"),
+    ("X", "K"),
+    ("S", "Z"),
+    ("X", "S"),
+    ("Q", "C"),
+    ("U", "V"),
+    ("M", "N"),
+    ("L", "I"),
+    ("Q", "O"),
+    ("P", "R"),
+    ("I", "J"),
+    ("2", "Z"),
+    ("5", "S"),
+    ("8", "B"),
+    ("1", "I"),
+    ("1", "L"),
+    ("0", "O"),
+    ("0", "Q"),
+    ("C", "K"),
+    ("G", "J"),
 ];
 
 fn in_range(ch: char) -> bool {
@@ -43,8 +75,14 @@ fn in_range(ch: char) -> bool {
 
 fn strcmp95_impl(s1: &[char], s2: &[char], long_strings: bool) -> f64 {
     // Uppercase and strip
-    let s1: Vec<char> = s1.iter().map(|c| c.to_uppercase().next().unwrap_or(*c)).collect();
-    let s2: Vec<char> = s2.iter().map(|c| c.to_uppercase().next().unwrap_or(*c)).collect();
+    let s1: Vec<char> = s1
+        .iter()
+        .map(|c| c.to_uppercase().next().unwrap_or(*c))
+        .collect();
+    let s2: Vec<char> = s2
+        .iter()
+        .map(|c| c.to_uppercase().next().unwrap_or(*c))
+        .collect();
 
     let len_s1 = s1.len();
     let len_s2 = s2.len();
@@ -70,12 +108,16 @@ fn strcmp95_impl(s1: &[char], s2: &[char], long_strings: bool) -> f64 {
 
     let mut s1_flag = vec![0i32; search_range];
     let mut s2_flag = vec![0i32; search_range];
-    let sr = if search_range > 2 { search_range / 2 - 1 } else { 0 };
+    let sr = if search_range > 2 {
+        search_range / 2 - 1
+    } else {
+        0
+    };
 
     // Count matching pairs
     let mut num_com = 0;
     for (i, &sc1) in s1.iter().enumerate() {
-        let lowlim = if i > sr { i - sr } else { 0 };
+        let lowlim = i.saturating_sub(sr);
         let hilim = std::cmp::min(i + sr, len_s2 - 1);
         for j in lowlim..=hilim {
             if s2_flag[j] == 0 && s2[j] == sc1 {

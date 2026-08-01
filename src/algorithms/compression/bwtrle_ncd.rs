@@ -25,18 +25,24 @@ impl BWTRLENCD {
         let bytes: Vec<u8> = s.bytes().collect();
         let mut indices: Vec<usize> = (0..n).collect();
         indices.sort_by(|&a, &b| {
-            bytes[a..].iter().chain(bytes[..a].iter())
+            bytes[a..]
+                .iter()
+                .chain(bytes[..a].iter())
                 .zip(bytes[b..].iter().chain(bytes[..b].iter()))
                 .find_map(|(x, y)| if x != y { Some(x.cmp(y)) } else { None })
                 .unwrap_or(std::cmp::Ordering::Equal)
         });
-        indices.iter().map(|&i| {
-            if i == 0 {
-                *bytes.last().unwrap()
-            } else {
-                bytes[i - 1]
-            }
-        }).map(|b| b as char).collect()
+        indices
+            .iter()
+            .map(|&i| {
+                if i == 0 {
+                    *bytes.last().unwrap()
+                } else {
+                    bytes[i - 1]
+                }
+            })
+            .map(|b| b as char)
+            .collect()
     }
 
     fn rle_compress(&self, data: &str) -> String {
@@ -74,7 +80,8 @@ impl BWTRLENCD {
     fn ncd(&self, s1: &str, s2: &str) -> f64 {
         let c1 = self.compress_size(s1);
         let c2 = self.compress_size(s2);
-        let concat_min = self.compress_size(&format!("{}{}", s1, s2))
+        let concat_min = self
+            .compress_size(&format!("{}{}", s1, s2))
             .min(self.compress_size(&format!("{}{}", s2, s1)));
         let min_compressed = c1.min(c2);
         let max_compressed = c1.max(c2);

@@ -23,10 +23,10 @@ impl Distance for Levenshtein {
                 let cost = if s1[i - 1] == s2[j - 1] { 0 } else { 1 };
                 curr[j] = std::cmp::min(
                     std::cmp::min(
-                        prev[j] + 1,      // deletion
-                        curr[j - 1] + 1,  // insertion
+                        prev[j] + 1,     // deletion
+                        curr[j - 1] + 1, // insertion
                     ),
-                    prev[j - 1] + cost,   // substitution
+                    prev[j - 1] + cost, // substitution
                 );
             }
             std::mem::swap(&mut prev, &mut curr);

@@ -2,9 +2,9 @@
 // All 7 algorithms from the Python original
 
 pub mod chebyshev;
-pub mod minkowski;
-pub mod manhattan;
-pub mod euclidean;
-pub mod mahalanobis;
 pub mod correlation;
+pub mod euclidean;
 pub mod kulsinski;
+pub mod mahalanobis;
+pub mod manhattan;
+pub mod minkowski;

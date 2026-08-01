@@ -6,7 +6,9 @@ pub struct RatcliffObershelp {
 
 impl Default for RatcliffObershelp {
     fn default() -> Self {
-        Self { lcsstr: LCSStr::new() }
+        Self {
+            lcsstr: LCSStr::new(),
+        }
     }
 }
 
@@ -38,8 +40,14 @@ impl RatcliffObershelp {
         let chars2: Vec<char> = s2.chars().collect();
         let subseq_chars: Vec<char> = subseq.chars().collect();
 
-        let pos1 = chars1.windows(subseq_chars.len()).position(|w| w == subseq_chars.as_slice()).unwrap_or(0);
-        let pos2 = chars2.windows(subseq_chars.len()).position(|w| w == subseq_chars.as_slice()).unwrap_or(0);
+        let pos1 = chars1
+            .windows(subseq_chars.len())
+            .position(|w| w == subseq_chars.as_slice())
+            .unwrap_or(0);
+        let pos2 = chars2
+            .windows(subseq_chars.len())
+            .position(|w| w == subseq_chars.as_slice())
+            .unwrap_or(0);
 
         let before1: String = chars1[..pos1].iter().collect();
         let after1: String = chars1[pos1 + length..].iter().collect();

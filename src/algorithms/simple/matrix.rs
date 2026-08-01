@@ -29,7 +29,12 @@ impl Matrix {
         symmetric: bool,
         entries: HashMap<(char, char), i64>,
     ) -> Self {
-        Self { match_cost, mismatch_cost, symmetric, entries }
+        Self {
+            match_cost,
+            mismatch_cost,
+            symmetric,
+            entries,
+        }
     }
 
     pub fn similarity(&self, s1: &str, s2: &str) -> f64 {

@@ -1,6 +1,6 @@
-use std::collections::HashMap;
 use num_bigint::{BigInt, Sign};
-use num_traits::{Zero, ToPrimitive};
+use num_traits::{ToPrimitive, Zero};
+use std::collections::HashMap;
 
 pub struct ArithNCD {
     base: f64,
@@ -26,7 +26,10 @@ impl Fraction {
     }
 
     fn from_integer(n: BigInt) -> Self {
-        Self { numer: n, denom: BigInt::from(1) }
+        Self {
+            numer: n,
+            denom: BigInt::from(1),
+        }
     }
 
     fn zero() -> Self {
@@ -138,7 +141,12 @@ impl ArithNCD {
         (chars, starts, Fraction::from_integer(total))
     }
 
-    fn get_range(data: &str, chars: &[char], starts: &[Fraction], total: &Fraction) -> (Fraction, Fraction) {
+    fn get_range(
+        data: &str,
+        chars: &[char],
+        starts: &[Fraction],
+        total: &Fraction,
+    ) -> (Fraction, Fraction) {
         let mut start = Fraction::zero();
         let mut width = Fraction::one();
         let counts = Self::char_counts(data);
@@ -171,7 +179,7 @@ impl ArithNCD {
             let floor_val = &s_num / &s.denom;
             let num_numerator = one_int.clone() + floor_val;
             num = Fraction::new(num_numerator, den_int.clone());
-            den_int = den_int * 2;
+            den_int *= 2;
         }
         num
     }
@@ -189,7 +197,8 @@ impl ArithNCD {
     fn ncd(&self, s1: &str, s2: &str) -> f64 {
         let c1 = self.compress_size(s1);
         let c2 = self.compress_size(s2);
-        let concat_min = self.compress_size(&format!("{}{}", s1, s2))
+        let concat_min = self
+            .compress_size(&format!("{}{}", s1, s2))
             .min(self.compress_size(&format!("{}{}", s2, s1)));
         let min_compressed = c1.min(c2);
         let max_compressed = c1.max(c2);
@@ -222,4 +231,3 @@ mod tests {
         assert!(similar <= diff, "similar={} > diff={}", similar, diff);
     }
 }
-

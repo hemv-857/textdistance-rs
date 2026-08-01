@@ -40,7 +40,8 @@ impl EntropyNCD {
     fn ncd(&self, s1: &str, s2: &str) -> f64 {
         let c1 = self.compress_size(s1);
         let c2 = self.compress_size(s2);
-        let concat_min = self.compress_size(&format!("{}{}", s1, s2))
+        let concat_min = self
+            .compress_size(&format!("{}{}", s1, s2))
             .min(self.compress_size(&format!("{}{}", s2, s1)));
         let min_compressed = c1.min(c2);
         let max_compressed = c1.max(c2);

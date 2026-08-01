@@ -1,7 +1,7 @@
+pub mod compression;
 pub mod edit;
-pub mod token;
+pub mod phonetic;
 pub mod sequence;
 pub mod simple;
-pub mod phonetic;
-pub mod compression;
+pub mod token;
 pub mod vector;

@@ -3,7 +3,6 @@
 /// A generalized distance metric that includes Manhattan (p=1) and Euclidean (p=2) as special cases.
 ///
 /// Formula: (Σ|a_i - b_i|^p)^(1/p)
-
 use crate::VectorDistance;
 
 pub struct Minkowski {

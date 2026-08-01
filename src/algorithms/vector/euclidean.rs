@@ -4,7 +4,6 @@
 /// This is the "straight line" distance between two points in Euclidean space.
 ///
 /// Formula: sqrt(Σ(a_i - b_i)²)
-
 use crate::VectorDistance;
 
 pub struct Euclidean {
@@ -32,11 +31,7 @@ impl VectorDistance for Euclidean {
         if v1.len() != v2.len() {
             panic!("Vectors must have the same length");
         }
-        let sum_sq: f64 = v1
-            .iter()
-            .zip(v2.iter())
-            .map(|(a, b)| (a - b).powi(2))
-            .sum();
+        let sum_sq: f64 = v1.iter().zip(v2.iter()).map(|(a, b)| (a - b).powi(2)).sum();
         if self.squared {
             sum_sq
         } else {

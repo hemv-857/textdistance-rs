@@ -1,14 +1,9 @@
-use crate::Distance;
 use crate::algorithms::edit::damerau_levenshtein::DamerauLevenshtein;
+use crate::Distance;
 
+#[derive(Default)]
 pub struct MongeElkan {
     inner: DamerauLevenshtein,
-}
-
-impl Default for MongeElkan {
-    fn default() -> Self {
-        Self { inner: DamerauLevenshtein::new() }
-    }
 }
 
 impl MongeElkan {
@@ -61,7 +56,7 @@ mod tests {
     fn test_monge_elkan() {
         let alg = MongeElkan::new();
         let r = alg.similarity("Niall", "Neal");
-        assert!(r >= 0.0 && r <= 1.0, "got {}", r);
+        assert!((0.0..=1.0).contains(&r), "got {}", r);
         // Identical strings return maximum (2)
         let r2 = alg.similarity("a", "a");
         assert!((r2 - 2.0).abs() < 1e-10, "got {}", r2);

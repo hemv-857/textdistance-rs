@@ -4,7 +4,6 @@
 /// Also known as Maximum distance or Chessboard distance.
 ///
 /// Formula: max(|a_i - b_i|)
-
 use crate::VectorDistance;
 
 pub struct Chebyshev;
