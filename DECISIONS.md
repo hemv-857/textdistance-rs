@@ -129,7 +129,7 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 
 ### Parity Results
 - **CLI parity**: 35/36 algorithms match Python output exactly
-- **Adapter tests**: 84/84 pass (0 errors, 0 failures)
+- **Adapter tests**: 90/90 pass (0 errors, 0 failures)
 - **Unit tests**: 66/66 pass, zero warnings
 - **Differential fuzzer**: 528 tests, 4 divergences (99.2% match)
 

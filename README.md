@@ -71,7 +71,7 @@ This is consistent with the Python original where `Base.__call__()` returns dist
 
 | Category | Result |
 |----------|--------|
-| Adapter tests (Python vs Rust) | **84/84** pass |
+| Adapter tests (Python vs Rust) | **90/90** pass |
 | Unit tests | **66/66** pass |
 | Differential fuzzer | **99.2%** match (4 divergences on 528 tests) |
 
