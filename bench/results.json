@@ -1,0 +1,71 @@
+{
+  "benchmarks": [
+    {
+      "algorithm": "cosine",
+      "rust_p50_ns": null,
+      "python_p50_ns": 6941.8,
+      "speedup": null
+    },
+    {
+      "algorithm": "damerau_levenshtein",
+      "rust_p50_ns": 167.62,
+      "python_p50_ns": 34741.6,
+      "speedup": 207.3
+    },
+    {
+      "algorithm": "hamming",
+      "rust_p50_ns": 3.17,
+      "python_p50_ns": 5666.8,
+      "speedup": 1787.6
+    },
+    {
+      "algorithm": "jaccard",
+      "rust_p50_ns": null,
+      "python_p50_ns": 8608.4,
+      "speedup": null
+    },
+    {
+      "algorithm": "jaro",
+      "rust_p50_ns": 64.7,
+      "python_p50_ns": 4991.8,
+      "speedup": 77.2
+    },
+    {
+      "algorithm": "jaro_winkler",
+      "rust_p50_ns": 64.45,
+      "python_p50_ns": 5475.0,
+      "speedup": 84.9
+    },
+    {
+      "algorithm": "lcsseq",
+      "rust_p50_ns": null,
+      "python_p50_ns": 29358.2,
+      "speedup": null
+    },
+    {
+      "algorithm": "lcsstr",
+      "rust_p50_ns": null,
+      "python_p50_ns": 4400.0,
+      "speedup": null
+    },
+    {
+      "algorithm": "levenshtein",
+      "rust_p50_ns": 139.35,
+      "python_p50_ns": 24341.6,
+      "speedup": 174.7
+    }
+  ],
+  "methodology": {
+    "tool_rust": "criterion.rs v0.5.1",
+    "tool_python": "time.perf_counter() in Python 3.13",
+    "iterations": "100 samples (criterion), 1000 runs (Python)",
+    "input_pairs": [
+      "test/text",
+      "hello/world",
+      "algorithm/altruistic",
+      "sunday/saturday",
+      "kitten/sitting"
+    ],
+    "build_profile": "release (--release)"
+  }
+}

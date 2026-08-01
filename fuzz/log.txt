@@ -1,0 +1,61 @@
+[*] Starting differential fuzzer for 60s
+[*] Algorithms: hamming, levenshtein, damerau-levenshtein, jaro, jaro-winkler, str-cmp95, mlipns, needleman-wunsch, smith-waterman, gotoh, bag, jaccard, sorensen, tversky, overlap, cosine, tanimoto, monge-elkan, lcsseq, lcsstr, ratcliff-obershelp, prefix, postfix, length, identity, matrix, mra, editex
+[*] Press Ctrl+C to stop early
+
+[DIVERGENCE] ratcliff-obershelp('IcKVggcJEcLmd1bqlvR0tFn2BxtOgNQftsT8Oz1UouFBCRtUt4QGs029JIChaL35zYNBAuf2wiQxlL9h465tsBeXGSSNaWil8zbzuQxjfV35OuLcfe79PGaiqbC9isqOrqzXwykydEv10B2DlkKCQWCOQY0i07fXXY2g2RLaN0eR8upBsTvXTOrXTCG9iWQ8lFU5oUhMA6Cg2zLkv2wPCbHC14LRyKQO77TI2AQBaW08qCAtUnrcvAiAd0WErcHpYtV4Ylpkg50WvrWRWiMVZNv607RHyoVTa', 'yY6Lxxa65TPzHpyQ7hEzk7dRqyFKd5h4pBeHC0FgQTt4nSJNyBHNzWsMS9tcD39HyvHa3dwt4LfM4YEmZXaHEd9aZgpxiMBn8XZTljFsFXNrSUd0YBj5ZZUbJjCWcYaTIffRdVYjQm2x0x65dcYdDPmoD6qDzXbWVwFaJ2t7ObRJjeriLKI7zVdnZpqdGIyztmoG70zpvUuyG4OisU246WpgAGFQRvppu3mEPQg5IRJ6RTg4ehbi1pjJnpKYNVvfWLBcL0XHEmMSHpa3A9DMveOZh1hUMXui5OziGUDmfvVCzOW5i9QZzk2IN3B0lXISyLFS8PC48A0XkODJrhcoQYk8QsnKJ4nGWfTkOXKe2hrRfsJg6YzZLbFSZ3fhd6aCE9JSoNERqvXw8bDPSk7DsjNaxOeK')
+  Python: 0.05706134094151213
+  Rust:   0.05991440798858773
+[DIVERGENCE] ratcliff-obershelp('MWYqjyeS7nB6v0He8lYItRtRwcLXV7D4R7SOcp6akzkJCx4KDo2qkFBzNMLfbhLvpi31zxxO9zinX7ZHsgSwDiVHkZnzCK4Y4lrCtdaOcxz8d3wjROL6IkXon79stZk4gdVk2CTvppY3pOoN1bmGKYWRcdHDx3XIp6Q28Ki505etBmQ62yTWQyZTJofxDPe8mMoMvGGlcwedYCVbHgREt6K8lL86iuqpj15VuwqfEd7a41GS5gYMtPR383ce83zuMhU0c3qalyjmcBksSYc86K66anSPtBRk6teXa4IXtvMRIn', 'xNwPpEyRt2pVhYfX6QZgw0y3wXicRc6A8sKJLQvWwKSnYEx1PROdNMFZipGChLHemlMrjhBvp8nYkl6R1uewkBdB0faR6LjRcpHD3ESHVxx5EQOQgSgmGEfLKt9cyjfc7gFth8ZIkE6G1BKPuEkCHJPkYmipazcTctLyFhjAlvVEvL5CUIyY5d6jOec8CnzuZ0IVPbxp0kQGXaOxkZIrdyvGa2HwD0WQZSePV42tpd9K1GF36QMaOAoYK0xnM3IwZC448pPMEG')
+  Python: 0.07042253521126761
+  Rust:   0.09154929577464789
+[DIVERGENCE] ratcliff-obershelp('FSCzqggIIqhGZ3tYk5v1G5wdmcnwu4kFquBUiBVDMoCIwPpd51', '30mVNTxpnn8Azbj7oek1uw')
+  Python: 0.1111111111111111
+  Rust:   0.1388888888888889
+[DIVERGENCE] ratcliff-obershelp('nR6z0eS9DvdLSXPb1FFAAzyNWDtMTRayaxqKnre8fAt1ESZzZUZu2VLFN3HzEGRMzb9FrLmo2sNRZykqxl0x87mQTYz7jfIozf9LTfdnY', 'g2CUwYzsrKyxSnVIc64G9V944tnAcpZnlfXYQ8Amk439IOWRCgVkM2jsAp6x3FEc620xNiycpGBfGeD2IGHWc0ChJhI7MgnzP0Wc5SYGPY3nkO60CvhUliCd0lnT3xQI3sKXmtI8ma5yC0MZpzwANcGJrCNTB2oN1oHtG0FxIpxmBjtPqALnBHpZubMfOo4OO0xE3wYP6fktpwcr1qK0SGV53BqQM')
+  Python: 0.10429447852760736
+  Rust:   0.09202453987730061
+  [55.7s] 500 tests, 4 divergences, 54 errors
+[DIVERGENCE] mra('jMgOO', 'jMgOCO')
+  Python: 1
+  Rust:   4
+
+============================================================
+FUZZ RESULTS
+============================================================
+Duration:     62.8s
+Total tests:  560
+Divergences:  5
+Errors:       60
+Log file:     fuzz/log.txt
+
+Per-algorithm breakdown:
+  hamming                      20 tests - OK
+  levenshtein                  20 tests - OK
+  damerau-levenshtein          20 tests - OK
+  jaro                         20 tests - OK
+  jaro-winkler                 20 tests - OK
+  str-cmp95                    20 tests - OK
+  mlipns                       20 tests - OK
+  needleman-wunsch             20 tests - OK
+  smith-waterman               20 tests - OK
+  gotoh                        20 tests - OK
+  bag                          20 tests - OK
+  jaccard                      20 tests - OK
+  sorensen                     20 tests - OK
+  tversky                      20 tests - OK
+  overlap                      20 tests - OK
+  cosine                       20 tests - OK
+  tanimoto                     20 tests - OK
+  monge-elkan                  20 tests - OK
+  lcsseq                       20 tests - OK
+  lcsstr                       20 tests - OK
+  ratcliff-obershelp           20 tests - FAIL (4 divs)
+  prefix                       20 tests - OK
+  postfix                      20 tests - OK
+  length                       20 tests - OK
+  identity                     20 tests - OK
+  matrix                       20 tests - OK
+  mra                          20 tests - FAIL (1 divs)
+  editex                       20 tests - OK
+
+[-] 5 divergences found

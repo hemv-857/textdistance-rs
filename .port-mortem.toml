@@ -1,0 +1,7 @@
+[submission]
+track = "D"
+source_repo = "https://github.com/life4/textdistance"
+source_language = "Python"
+target_language = "Rust"
+kickoff_hash = "ecedb327b3a04c82f19b41da44d2931a7bb50a4b313804ee586425b7bce05bf0"  # SHA-256 of original test suite
+team_size = 1

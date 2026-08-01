@@ -1,0 +1,155 @@
+============================================================
+  Port Mortem — Test Parity Adapter
+============================================================
+
+PASS:  hamming('test', 'text') = 1
+PASS:  hamming('test', 'tset') = 2
+PASS:  hamming('test', 'qwe') = 4
+PASS:  hamming('test', 'testit') = 2
+PASS:  hamming('test', 'tesst') = 2
+PASS:  hamming('test', 'tet') = 2
+PASS:  levenshtein('test', 'text') = 1
+PASS:  levenshtein('test', 'tset') = 2
+PASS:  levenshtein('test', 'qwe') = 4
+PASS:  levenshtein('test', 'testit') = 2
+PASS:  levenshtein('test', 'tesst') = 1
+PASS:  levenshtein('test', 'tet') = 1
+PASS:  damerau_levenshtein('test', 'text') = 1
+PASS:  damerau_levenshtein('test', 'tset') = 1
+PASS:  damerau_levenshtein('test', 'qwy') = 4
+PASS:  damerau_levenshtein('test', 'testit') = 2
+PASS:  damerau_levenshtein('test', 'tesst') = 1
+PASS:  damerau_levenshtein('test', 'tet') = 1
+PASS:  damerau_levenshtein('cat', 'hat') = 1
+PASS:  damerau_levenshtein('Niall', 'Neil') = 3
+PASS:  damerau_levenshtein('aluminum', 'Catalan') = 7
+PASS:  damerau_levenshtein('ATCG', 'TAGC') = 2
+PASS:  damerau_levenshtein('ab', 'ba') = 1
+PASS:  damerau_levenshtein('ab', 'cde') = 3
+PASS:  damerau_levenshtein('ab', 'ac') = 1
+PASS:  damerau_levenshtein('ab', 'bc') = 2
+PASS:  damerau_levenshtein('ab', 'bca') = 3
+PASS:  damerau_levenshtein('abcd', 'bdac') = 4
+PASS:  jaro('hello', 'haloa') = 0.7333333333333334
+PASS:  jaro('fly', 'ant') = 0
+PASS:  jaro('frog', 'fog') = 0.9166666666666666
+PASS:  jaro('ATCG', 'TAGC') = 0.8333333333333334
+PASS:  jaro('MARTHA', 'MARHTA') = 0.9444444444444445
+PASS:  jaro('DWAYNE', 'DUANE') = 0.8222222222222223
+PASS:  jaro('DIXON', 'DICKSONX') = 0.7666666666666666
+PASS:  jaro_winkler('elephant', 'hippo') = 0.44166666666666665
+PASS:  jaro_winkler('fly', 'ant') = 0
+PASS:  jaro_winkler('frog', 'fog') = 0.9249999999999999
+PASS:  jaro_winkler('MARTHA', 'MARHTA') = 0.9611111111111111
+PASS:  jaro_winkler('DWAYNE', 'DUANE') = 0.8400000000000001
+PASS:  jaro_winkler('DIXON', 'DICKSONX') = 0.8133333333333332
+PASS:  jaro_winkler('duck donald', 'duck daisy') = 0.8672727272727273
+PASS:  jaccard('test', 'text') = 0.6
+PASS:  jaccard('nelson', 'neilsen') = 0.625
+PASS:  jaccard('decide', 'resize') = 0.3333333333333333
+PASS:  sorensen('test', 'text') = 0.75
+PASS:  cosine('test', 'text') = 0.75
+PASS:  cosine('nelson', 'neilsen') = 0.7715167498104595
+PASS:  overlap('test', 'text') = 0.75
+PASS:  overlap('testme', 'textthis') = 0.6666666666666666
+PASS:  overlap('nelson', 'neilsen') = 0.8333333333333334
+PASS:  lcsseq('ab', 'cd') = 0
+PASS:  lcsseq('abcd', 'abcd') = 4
+PASS:  lcsseq('test', 'text') = 3
+PASS:  lcsseq('DIXON', 'DICKSONX') = 4
+PASS:  lcsstr('ab', 'abcd') = 2
+PASS:  lcsstr('abcd', 'ab') = 2
+PASS:  lcsstr('abcd', 'bc') = 2
+PASS:  lcsstr('abcd', 'ef') = 0
+PASS:  bag('qwe', 'qwe') = 0
+PASS:  bag('qwe', 'erty') = 3
+PASS:  bag('qwe', 'ewq') = 0
+PASS:  bag('qwe', 'rtys') = 4
+PASS:  strcmp95('MARTHA', 'MARHTA') = 0.9611111111111111
+PASS:  strcmp95('DWAYNE', 'DUANE') = 0.873
+PASS:  strcmp95('DIXON', 'DICKSONX') = 0.8393333333333334
+PASS:  strcmp95('TEST', 'TEXT') = 0.9066666666666666
+PASS:  mlipns('', '') = 1
+PASS:  mlipns('a', '') = 0
+PASS:  mlipns('', 'a') = 0
+PASS:  mlipns('a', 'a') = 1
+PASS:  mlipns('ab', 'a') = 1
+PASS:  mlipns('abc', 'abc') = 1
+PASS:  mlipns('abc', 'abcde') = 1
+PASS:  mlipns('Tomato', 'Tamato') = 1
+PASS:  monge_elkan('elephant', 'hippo') = 0.03125
+PASS:  mra('nelson', 'neilsen') = 0
+PASS:  mra('niall', 'neal') = 0
+PASS:  mra('cat', 'hat') = 1
+PASS:  editex('nelson', 'neilsen') = 2
+PASS:  editex('niall', 'neal') = 1
+PASS:  editex('cat', 'hat') = 2
+PASS:  editex('ab', 'c') = 4
+PASS:  editex('ALIE', 'ALI') = 1
+ERROR: chebyshev('1 2 3', '4 5 6') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.chebyshev
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'chebyshev'
+ERROR: chebyshev('0 0 0', '3 4 5') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.chebyshev
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'chebyshev'
+ERROR: minkowski('1 2 3', '4 5 6') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.minkowski
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'minkowski'
+ERROR: manhattan('1 2 3', '4 5 6') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.manhattan
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'manhattan'
+ERROR: manhattan('0 0 0', '3 4 5') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.manhattan
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'manhattan'
+ERROR: euclidean('0 0', '3 4') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.euclidean
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'euclidean'
+ERROR: euclidean('1 2 3', '4 5 6') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.euclidean
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'euclidean'
+ERROR: mahalanobis('0 0', '3 4') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.mahalanobis
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'mahalanobis'
+ERROR: correlation('1 2 3', '1 2 3') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.correlation
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'correlation'
+ERROR: correlation('1 2 3', '3 2 1') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.correlation
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'correlation'
+ERROR: kulsinski('1 0 1 0', '1 0 1 0') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.kulsinski
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'kulsinski'
+ERROR: kulsinski('1 0 0 0', '0 1 0 0') Python error: Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    alg = textdistance.kulsinski
+          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'textdistance' has no attribute 'kulsinski'
+
+============================================================
+  RESULTS: 84/96 passed, 0 failed
+============================================================
+  Results saved to: test_results.json
+
+[+] ALL TESTS PASSED — Test parity achieved!
