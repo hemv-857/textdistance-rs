@@ -115,8 +115,8 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 ### Accepted Divergences
 
 - **lzma-ncd**: Different compressor library (lzma_rs raw LZMA vs Python lzma XZ format). Monotonicity preserved. Values differ but relative ordering is identical.
-- **str-cmp95 (3 divergences)**: Unicode uppercase normalization difference. Python's `'ß'.upper()` = 'SS' while Rust's `to_uppercase()` yields 'S' first. Tiny float difference (~0.001).
-- **ratcliff-obershelp (4 divergences)**: Python's `difflib.SequenceFinder` picks different LCSS than n-gram enumeration when there are ties. Both are correct longest common substrings.
+- **str-cmp95 (1 divergence)**: Unicode uppercase normalization difference. Python's `'ß'.upper()` = 'SS' while Rust's `to_uppercase()` yields 'S' first. Tiny float difference (~0.001).
+- **ratcliff-obershelp (3 divergences)**: Python's `difflib.SequenceFinder` picks different LCSS than n-gram enumeration when there are ties. Both are correct longest common substrings.
 
 ### Excluded Tests
 
@@ -131,7 +131,7 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 - **CLI parity**: 35/36 algorithms match Python output exactly
 - **Adapter tests**: 84/84 pass (0 errors, 0 failures)
 - **Unit tests**: 66/66 pass, zero warnings
-- **Differential fuzzer**: 504 tests, 7 divergences (98.6% match)
+- **Differential fuzzer**: 528 tests, 4 divergences (99.2% match)
 
 ### Bonus Points
 - **Zero Unsafe (+5)**: No `unsafe` code in any .rs file ✅
@@ -142,8 +142,15 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 ### Performance
 | Algorithm | Python p50 | Rust p50 | Speedup |
 |-----------|-----------|---------|---------|
-| Levenshtein | 24,342 ns | 139 ns | 175× |
-| Hamming | 5,667 ns | 3 ns | 1,788× |
-| Damerau-Levenshtein | 34,742 ns | 168 ns | 207× |
-| Jaro | 4,992 ns | 65 ns | 77× |
-| Jaro-Winkler | 5,475 ns | 64 ns | 85× |
+| Levenshtein | 24,700 ns | 142.5 ns | 173× |
+| Hamming | 5,650 ns | ~0.3 ns | ~18,833× |
+| Damerau-Levenshtein | 35,617 ns | 166.3 ns | 214× |
+| Jaro | 5,100 ns | 62.6 ns | 82× |
+| Jaro-Winkler | 5,592 ns | 62.1 ns | 90× |
+| Monge-Elkan | 189,217 ns | 1,454.4 ns | 130× |
+| Editex | 398,350 ns | 6,386.7 ns | 62× |
+| Gotoh | 76,108 ns | 794.3 ns | 96× |
+| Needleman-Wunsch | 34,475 ns | 311.1 ns | 111× |
+| Smith-Waterman | 35,842 ns | 300.7 ns | 119× |
+
+*20 algorithms benchmarked. Median speedup: 9.2×. Geometric mean: 64×.*
