@@ -1,61 +1,55 @@
-[*] Starting differential fuzzer for 60s
-[*] Algorithms: hamming, levenshtein, damerau-levenshtein, jaro, jaro-winkler, str-cmp95, mlipns, needleman-wunsch, smith-waterman, gotoh, bag, jaccard, sorensen, tversky, overlap, cosine, tanimoto, monge-elkan, lcsseq, lcsstr, ratcliff-obershelp, prefix, postfix, length, identity, matrix, mra, editex
-[*] Press Ctrl+C to stop early
+Differential Fuzz Log
+Duration: 61.2s
+Total tests: 532
+Divergences: 4
+Errors: 57
 
-[DIVERGENCE] ratcliff-obershelp('IcKVggcJEcLmd1bqlvR0tFn2BxtOgNQftsT8Oz1UouFBCRtUt4QGs029JIChaL35zYNBAuf2wiQxlL9h465tsBeXGSSNaWil8zbzuQxjfV35OuLcfe79PGaiqbC9isqOrqzXwykydEv10B2DlkKCQWCOQY0i07fXXY2g2RLaN0eR8upBsTvXTOrXTCG9iWQ8lFU5oUhMA6Cg2zLkv2wPCbHC14LRyKQO77TI2AQBaW08qCAtUnrcvAiAd0WErcHpYtV4Ylpkg50WvrWRWiMVZNv607RHyoVTa', 'yY6Lxxa65TPzHpyQ7hEzk7dRqyFKd5h4pBeHC0FgQTt4nSJNyBHNzWsMS9tcD39HyvHa3dwt4LfM4YEmZXaHEd9aZgpxiMBn8XZTljFsFXNrSUd0YBj5ZZUbJjCWcYaTIffRdVYjQm2x0x65dcYdDPmoD6qDzXbWVwFaJ2t7ObRJjeriLKI7zVdnZpqdGIyztmoG70zpvUuyG4OisU246WpgAGFQRvppu3mEPQg5IRJ6RTg4ehbi1pjJnpKYNVvfWLBcL0XHEmMSHpa3A9DMveOZh1hUMXui5OziGUDmfvVCzOW5i9QZzk2IN3B0lXISyLFS8PC48A0XkODJrhcoQYk8QsnKJ4nGWfTkOXKe2hrRfsJg6YzZLbFSZ3fhd6aCE9JSoNERqvXw8bDPSk7DsjNaxOeK')
-  Python: 0.05706134094151213
-  Rust:   0.05991440798858773
-[DIVERGENCE] ratcliff-obershelp('MWYqjyeS7nB6v0He8lYItRtRwcLXV7D4R7SOcp6akzkJCx4KDo2qkFBzNMLfbhLvpi31zxxO9zinX7ZHsgSwDiVHkZnzCK4Y4lrCtdaOcxz8d3wjROL6IkXon79stZk4gdVk2CTvppY3pOoN1bmGKYWRcdHDx3XIp6Q28Ki505etBmQ62yTWQyZTJofxDPe8mMoMvGGlcwedYCVbHgREt6K8lL86iuqpj15VuwqfEd7a41GS5gYMtPR383ce83zuMhU0c3qalyjmcBksSYc86K66anSPtBRk6teXa4IXtvMRIn', 'xNwPpEyRt2pVhYfX6QZgw0y3wXicRc6A8sKJLQvWwKSnYEx1PROdNMFZipGChLHemlMrjhBvp8nYkl6R1uewkBdB0faR6LjRcpHD3ESHVxx5EQOQgSgmGEfLKt9cyjfc7gFth8ZIkE6G1BKPuEkCHJPkYmipazcTctLyFhjAlvVEvL5CUIyY5d6jOec8CnzuZ0IVPbxp0kQGXaOxkZIrdyvGa2HwD0WQZSePV42tpd9K1GF36QMaOAoYK0xnM3IwZC448pPMEG')
-  Python: 0.07042253521126761
-  Rust:   0.09154929577464789
-[DIVERGENCE] ratcliff-obershelp('FSCzqggIIqhGZ3tYk5v1G5wdmcnwu4kFquBUiBVDMoCIwPpd51', '30mVNTxpnn8Azbj7oek1uw')
-  Python: 0.1111111111111111
-  Rust:   0.1388888888888889
-[DIVERGENCE] ratcliff-obershelp('nR6z0eS9DvdLSXPb1FFAAzyNWDtMTRayaxqKnre8fAt1ESZzZUZu2VLFN3HzEGRMzb9FrLmo2sNRZykqxl0x87mQTYz7jfIozf9LTfdnY', 'g2CUwYzsrKyxSnVIc64G9V944tnAcpZnlfXYQ8Amk439IOWRCgVkM2jsAp6x3FEc620xNiycpGBfGeD2IGHWc0ChJhI7MgnzP0Wc5SYGPY3nkO60CvhUliCd0lnT3xQI3sKXmtI8ma5yC0MZpzwANcGJrCNTB2oN1oHtG0FxIpxmBjtPqALnBHpZubMfOo4OO0xE3wYP6fktpwcr1qK0SGV53BqQM')
-  Python: 0.10429447852760736
-  Rust:   0.09202453987730061
-  [55.7s] 500 tests, 4 divergences, 54 errors
-[DIVERGENCE] mra('jMgOO', 'jMgOCO')
-  Python: 1
-  Rust:   4
+  hamming: 19 tests - OK
+  levenshtein: 19 tests - OK
+  damerau-levenshtein: 19 tests - OK
+  jaro: 19 tests - OK
+  jaro-winkler: 19 tests - OK
+  str-cmp95: 19 tests - FAIL (1 divs)
+  mlipns: 19 tests - OK
+  needleman-wunsch: 19 tests - OK
+  smith-waterman: 19 tests - OK
+  gotoh: 19 tests - OK
+  bag: 19 tests - OK
+  jaccard: 19 tests - OK
+  sorensen: 19 tests - OK
+  tversky: 19 tests - OK
+  overlap: 19 tests - OK
+  cosine: 19 tests - OK
+  tanimoto: 19 tests - OK
+  monge-elkan: 19 tests - OK
+  lcsseq: 19 tests - OK
+  lcsstr: 19 tests - OK
+  ratcliff-obershelp: 19 tests - FAIL (3 divs)
+  prefix: 19 tests - OK
+  postfix: 19 tests - OK
+  length: 19 tests - OK
+  identity: 19 tests - OK
+  matrix: 19 tests - OK
+  mra: 19 tests - OK
+  editex: 19 tests - OK
 
-============================================================
-FUZZ RESULTS
-============================================================
-Duration:     62.8s
-Total tests:  560
-Divergences:  5
-Errors:       60
-Log file:     fuzz/log.txt
+DIVERGENCE: str-cmp95
+  Input: ['5MMiwRNßMEsnXcDñm3IdLgBWHQ', 'iN3ehcS1ü']
+  Python: 0.5283950617283951
+  Rust:   0.530911680911681
 
-Per-algorithm breakdown:
-  hamming                      20 tests - OK
-  levenshtein                  20 tests - OK
-  damerau-levenshtein          20 tests - OK
-  jaro                         20 tests - OK
-  jaro-winkler                 20 tests - OK
-  str-cmp95                    20 tests - OK
-  mlipns                       20 tests - OK
-  needleman-wunsch             20 tests - OK
-  smith-waterman               20 tests - OK
-  gotoh                        20 tests - OK
-  bag                          20 tests - OK
-  jaccard                      20 tests - OK
-  sorensen                     20 tests - OK
-  tversky                      20 tests - OK
-  overlap                      20 tests - OK
-  cosine                       20 tests - OK
-  tanimoto                     20 tests - OK
-  monge-elkan                  20 tests - OK
-  lcsseq                       20 tests - OK
-  lcsstr                       20 tests - OK
-  ratcliff-obershelp           20 tests - FAIL (4 divs)
-  prefix                       20 tests - OK
-  postfix                      20 tests - OK
-  length                       20 tests - OK
-  identity                     20 tests - OK
-  matrix                       20 tests - OK
-  mra                          20 tests - FAIL (1 divs)
-  editex                       20 tests - OK
+DIVERGENCE: ratcliff-obershelp
+  Input: ['ZEOpTDASdtV9P5h1mfVoPB9J95r4NpFUAQtmdMinSbP5bhCN5sJubJ5ulV3Byvg4sLZXUG4DFs2vWAeJr34FR5ECH0UdTKFOSEtx7xYIGJvqJuLzMbPvHwL4u8tTM0lLceQIJErxsjovYtHMgtx6fhCeyHGtAT1swL90SvtpSblRVkMrBtmJRm6V06deWSJcrBOWwD0rLuKDZEFKwfUE1NBfvUHVyk1DMmvNqDm6pOQwRS1YsJk08qa5', 'P6xHToCdfdE3Wx78MZ6Ul31PGFxhTPUzWQEV2uHsTzq5nlGXRDhpbSCjqmJBRsW4G0gaOpUHhz3w4Be3y3A6xU9yyE8pRy1eYYMtIe06M76NH9HuHbCJXYnpCrdykdpXRI8uXY9pXSw0tPOYzJyb80QQqz6x3Age3rAtHAfvtC0cOYwIvo95YQrocMAo2oKBPYgWiHu0QGg5gQvkoNZOdGNCD8lZI5e2pW7fh1DAT625DyrgCjUKRzmSEPuZd1B25GUqEF5GLaLbTzT4b44DIORjEUt53roo2FpwRXOfyZgkJ4ACsIgvO7zOC3ukzKuttou1vJGtf10A8KM8H8UUmUxXOSE8dnotiM9fPDQSiGHqNHLca3rD9IfvfE0cBI0EPpk4hgdf7pSdngOT4fjhCmBBW9Cpk542d6TNxu5PCVora7znWyqyMJZ3A99ZEEyhHrvtczvsHXh8XBPfWL1G0pFCjpAZcZEVPIQnjBkr9YiJuptR0p8']
+  Python: 0.08299866131191433
+  Rust:   0.0856760374832664
 
-[-] 5 divergences found
+DIVERGENCE: ratcliff-obershelp
+  Input: ['cHzlTQkAPl7ZcXohNxan1CCr05eDBZHsjPy0PxJpY1yJe99NtykTy6ZmbGDaRvbFKmggrmCqMLV9uqJq9NU29tehZWpuRJvlqGQ9owbRKqLvqpHlA777q0IY6baGoXmpmO4k4s14lTCEhGLOvM4zJ2GPm8utIzzoD2NtUfbyTBy6QwdZmDKpUZ5o719DayRdm8cWP5mC5xSQgvH3fdFPeb68ddDquCjvt3etcguJsgEF3PdIWNus5jIKriBaL8Bf7uI9V59WH15shVfFGPcA8id2fYLGIg4AoU0zgK2we0Gw8t9jgLrQRJTqDMaUHHxCfRIzhGedNxdTI5gw90U3Yv00eiqFephQMJydLuzXuJ6ng6bHmeF', 'WsTfYh5G3C1xs2FSBfxPDLEsuBIjU4TQFBWD2J54TsESKTUhrADXE4b0cci5AVXW1VOBYfNJUBm2alFEY7oI4ac3R60j6sRCzglup0FUJmBXWIt1NK5znW8kAUtEz4EwegWv3myb3S1GP7exij0BJxhI2guImjwlqon9XwWZcCiaXbmtvn8imSAp7FRejLUm5cuJq2Cko8ak4TvSOZKWZkGGCltEE4BGG0YvnsM6PlDn7uLHQflfRaYtdWtTiws2wVlW5dCZVBYq10vosTlPfKTwFC6QdQX9twufKKuopUVWPFZMbET8vMIrGkKXtEeWr6M9tdZlWx0vNKLHREHgJBPlMftiBeotXnSgUuuXOFiPZRvWNpvzm']
+  Python: 0.06989247311827956
+  Rust:   0.08064516129032258
+
+DIVERGENCE: ratcliff-obershelp
+  Input: ['3AN4subJsOidb5RxFTTZeOijOH3AR4zdh30mx2knaTFLlHuJHO2gIiGnVPXm6SKKVDKK0VoyzquSuag7soSqubQQCl7srwjCCw0o6CK9BhJW5ouzpcZW1OEGRGN6jmtE9pFg678bZj99QthyTlh6UwKu0ZGGdslWhZrq4pLy6QmXeJfpHFRLasgyrRcEKa657VmKsNbPeZnp69UTmZxM9oeiVDkQm1YefFSaYCJmuyykoWKE8KtoCNzReIuYX5RXMjNfmK6nQ0UqAMOy2aonhGkV495D0IkRLUi7hgrgQTsLFwQEKKPLuKKu7AhEUFXyTRJ6gfSEThoNE4oLItolp8oKtsmkoAya2mtpoTDbDyZdgkw8VMJP1kW1dwSOckWpVq40dB5wmKtui2h23a8xTxfEyRJSQQZvoEy7sIP5wpeTJmR2qvVDgFWf9ycl4al1H7CsjlGUs7Nm', 'g0Lqpr4ioIXjIqJsbBwCtdqCtrp8icWMTCqHdoal75zdyCZi4AIUQ7oDzCyjKbNwz47ruYqATAYg3RpirruxWNK2CDk7VbfaSG3ksp921xd52mc3aI1vv1gW1tDJG4JnaTvWaJHpfFbr1znp8SWkh9EJNtOafcgIHhorntBtZBiefyKxBoGCrsZLeBtx4AaVHklkj6iWv0jEcH1VGADvvomo81i7WTDPvQRmB1Z6xPq3szyXjQsLoJaX6cRzX4uz9NpOJVvGt6QmapK6U49HfDvXnQC72K57z5CJYilf3AUsZH2H7tksG2dU58cG6yd7IX0A0HUIRvELhvjfJikdamh4yvgsjvPsesDPwKMwF2bLZPz9cTfQlN2esCUwU8lepIBGIbsGxstkYvoCIdT2H9EltUdoNuEL7nZyghlkOmNU9m1cTKI1CNXZ7XsbiMaCWOBFkCO3HXRJTZzJEZ1lMjxfMoZCypPhoLppICl3LA7wSz']
+  Python: 0.11949685534591195
+  Rust:   0.129979035639413
+
