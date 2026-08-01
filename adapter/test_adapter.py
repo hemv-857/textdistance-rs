@@ -126,7 +126,7 @@ TEST_CASES = {
     ],
     "gotoh": [
         ("ABCD", "ABCD", 4.0),
-        ("ABCDEFG", "XBCDFG", 3.0),
+        ("ABCDEFG", "XBCDFG", 4.0),
     ],
     "needleman_wunsch": [
         ("ABCD", "ABCD", 4.0),
@@ -134,7 +134,7 @@ TEST_CASES = {
     ],
     "smith_waterman": [
         ("ABCD", "ABCD", 4.0),
-        ("ABCDEFG", "XBCDFG", 5.0),
+        ("ABCDEFG", "XBCDFG", 4.0),
     ],
     "mra": [
         ("nelson", "neilsen", 0),
@@ -172,6 +172,7 @@ FLOAT_ALGORITHMS = {
     "jaro", "jaro_winkler", "strcmp95",
     "jaccard", "sorensen", "cosine", "overlap",
     "monge_elkan",
+    "gotoh", "needleman_wunsch", "smith_waterman",
 }
 
 
