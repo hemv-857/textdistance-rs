@@ -13,13 +13,13 @@ impl LCSStr {
         Self
     }
 
-    pub fn similarity(&self, s1: &str, s2: &str) -> usize {
-        self.lcss(s1, s2).chars().count()
+    pub fn similarity(&self, s1: &str, s2: &str) -> f64 {
+        self.lcss(s1, s2).chars().count() as f64
     }
 
     pub fn distance(&self, s1: &str, s2: &str) -> f64 {
-        let max_len = max(s1.chars().count(), s2.chars().count());
-        (max_len - self.similarity(s1, s2)) as f64
+        let max_len = max(s1.chars().count(), s2.chars().count()) as f64;
+        max_len - self.similarity(s1, s2)
     }
 
     pub fn lcss(&self, s1: &str, s2: &str) -> String {

@@ -31,13 +31,13 @@ impl Postfix {
         chars[chars.len() - len..].iter().collect()
     }
 
-    pub fn similarity(&self, s1: &str, s2: &str) -> usize {
-        self.postfix_len(s1, s2)
+    pub fn similarity(&self, s1: &str, s2: &str) -> f64 {
+        self.postfix_len(s1, s2) as f64
     }
 
     pub fn distance(&self, s1: &str, s2: &str) -> f64 {
         let max_len = s1.chars().count().max(s2.chars().count());
-        (max_len - self.similarity(s1, s2)) as f64
+        max_len as f64 - self.similarity(s1, s2)
     }
 }
 

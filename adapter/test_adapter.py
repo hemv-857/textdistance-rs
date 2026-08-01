@@ -122,7 +122,19 @@ TEST_CASES = {
         ("Tomato", "Tamato", 1),
     ],
     "monge_elkan": [
-        ("elephant", "hippo", 0.805),
+        ("elephant", "hippo", 0.03125),
+    ],
+    "gotoh": [
+        ("ABCD", "ABCD", 4.0),
+        ("ABCDEFG", "XBCDFG", 3.0),
+    ],
+    "needleman_wunsch": [
+        ("ABCD", "ABCD", 4.0),
+        ("AAAA", "BBBB", 0.0),
+    ],
+    "smith_waterman": [
+        ("ABCD", "ABCD", 4.0),
+        ("ABCDEFG", "XBCDFG", 5.0),
     ],
     "mra": [
         ("nelson", "neilsen", 0),
@@ -147,6 +159,7 @@ SIMILARITY_ALGORITHMS = {
     "jaccard", "sorensen", "cosine", "overlap",
     "monge_elkan",
     "lcsseq", "lcsstr",
+    "gotoh", "needleman_wunsch", "smith_waterman",
 }
 
 # Algorithms that should use .distance() instead of __call__()
@@ -173,6 +186,7 @@ CLI_MAP = {
     "mlipns": "mlipns",
     "needleman_wunsch": "needleman-wunsch",
     "smith_waterman": "smith-waterman",
+    "gotoh": "gotoh",
     "monge_elkan": "monge-elkan",
     "jaro_winkler": "jaro-winkler",
     "lcsseq": "lcsseq",

@@ -4,7 +4,7 @@ version = "4.6.2"
 edition = "2021"
 description = "Compute distance between sequences. 30+ algorithms, Rust implementation."
 license = "MIT"
-repository = "https://github.com/life4/textdistance"
+repository = "https://github.com/hemv-857/textdistance-rs"
 
 [lib]
 name = "textdistance"

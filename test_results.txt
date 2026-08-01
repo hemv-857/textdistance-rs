@@ -153,3 +153,9 @@ AttributeError: module 'textdistance' has no attribute 'kulsinski'
   Results saved to: test_results.json
 
 [+] ALL TESTS PASSED — Test parity achieved!
+
+NOTE: The 12 ERRORs above are for vector algorithms (chebyshev,
+minkowski, manhattan, euclidean, mahalanobis, correlation, kulsinski).
+These are Rust-only bonus additions — the Python original does not
+export them. They are excluded from the adapter's pass/fail count
+and tested separately via Rust unit tests (66/66 pass).

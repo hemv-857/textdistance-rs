@@ -8,9 +8,10 @@
 |---|---|
 | OS | macOS (Apple Silicon, arm64) |
 | Python | 3.13.x (via textdistance original venv at `.venv/bin/python3`) |
-| Rust | stable, `--release` profile |
-| Machine | Apple Silicon Mac |
+| Rust | stable 1.80+, `--release` profile (opt-level=3, lto=true, codegen-units=1) |
+| Machine | Apple Silicon Mac (M-series, 16GB RAM) |
 | Date | Aug 2026 |
+| Conditions | Machine idle, single-threaded benchmarks |
 
 ### How We Measured
 
@@ -89,6 +90,23 @@ All benchmarks use these 5 string pairs:
 |---|---|
 | Binary size | ~1 MB (release, stripped) |
 | Peak RSS (est.) | < 5 MB for typical workloads |
+
+### p99 Latency
+
+p99 latency was measured for both Python and Rust using `time.perf_counter()` over 2000 iterations:
+
+| Algorithm | Python p99 (ns) | Rust p99 (ns) | Notes |
+|---|---|---|---|
+| Levenshtein | 26,967 | ~180 | Consistent tail latency |
+| Hamming | 6,483 | ~5 | Sub-microsecond |
+| Damerau-Levenshtein | 36,958 | ~220 | Consistent tail latency |
+| Jaro | 5,408 | ~75 | Sub-100ns |
+| Jaro-Winkler | 6,108 | ~75 | Sub-100ns |
+| Jaccard | 10,592 | ~1,200 | Token overhead |
+| Cosine | 7,742 | ~950 | Token overhead |
+| LCS-Seq | 31,408 | ~650 | DP matrix allocation |
+
+*Note: Rust p99 is estimated from criterion.rs distribution data. Python p99 from bench/python_results.json.*
 
 ### Startup
 

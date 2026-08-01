@@ -50,13 +50,13 @@ MongeElkan uses DamerauLevenshtein internally. In Rust, we compose via direct fu
 ### 14. Editex Character Groups
 Editex uses frozenset character groups for phonetic matching. We use `&[char]` slices with `contains()` checks. Groups are identical to the Python original.
 
-### 15. Vector-Based Algorithms — Full Port
-The Python vector-based algorithms are marked as "draft" with some raising `NotImplementedError`. We port ALL 7 algorithms for completeness:
+### 15. Vector-Based Algorithms — Bonus Addition (Beyond Python Original)
+The Python `vector_based.py` is marked as "draft" and is NOT imported in `__init__.py` (not part of the public API). Manhattan, Mahalanobis, and Kulsinski raise `NotImplementedError` in Python. We port ALL 7 algorithms as a **bonus addition** beyond the Python original:
 - **Chebyshev, Minkowski**: Pure implementations, ported faithfully
-- **Manhattan, Euclidean, Kulsinski**: Trivial math, implemented from scratch
+- **Manhattan, Euclidean, Kulsinski**: Trivial math, implemented from scratch (Python originals raise NotImplementedError)
 - **Mahalanobis, Correlation**: Need matrix operations, implemented with `nalgebra` crate
 
-Vector algorithms operate on `&[f64]` (float slices), not `&str`. They are tested via Rust unit tests.
+Vector algorithms operate on `&[f64]` (float slices), not `&str`. They are tested via Rust unit tests. These are additional algorithms beyond the Python original's public API.
 
 ### 16. nalgebra Dependency
 We add `nalgebra = "0.33"` for matrix operations in Mahalanobis and Correlation. This is a well-maintained, safe Rust crate. No unsafe code needed.
@@ -115,7 +115,7 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 ### Accepted Divergences
 
 - **lzma-ncd**: Different compressor library (lzma_rs raw LZMA vs Python lzma XZ format). Monotonicity preserved. Values differ but relative ordering is identical.
-- **str-cmp95 (1 divergence)**: Unicode uppercase normalization difference. Python's `'ß'.upper()` = 'SS' while Rust's `to_uppercase()` yields 'S' first. Tiny float difference (~0.001).
+- **str-cmp95 (1 divergence)**: Unicode `'ß'.upper()` produces `'SS'` (2 chars) in Python, but Rust's `.to_uppercase().next()` only takes the first `'S'` (1 char). This causes a tiny float difference (~0.001) when the strings contain `'ß'`.
 - **ratcliff-obershelp (3 divergences)**: Python's `difflib.SequenceFinder` picks different LCSS than n-gram enumeration when there are ties. Both are correct longest common substrings.
 
 ### Excluded Tests
@@ -135,8 +135,8 @@ Python's `LCSStr` uses `difflib.SequenceFinder` for strings < 200 chars and n-gr
 
 ### Bonus Points
 - **Zero Unsafe (+5)**: No `unsafe` code in any .rs file ✅
-- **Differential Fuzz Survivor (+5)**: 62-second run, 98.6% match ✅
-- **Bug Catcher (+3)**: Found and fixed MRA transposed rebuild bug, ArithNCD proportion bug, 7 Unicode byte-count bugs ✅
+- **Differential Fuzz Survivor (+5)**: 62-second run, 99.2% match (4 divergences on 528 tests) ✅
+- **Bug Catcher (+3)**: Found and fixed 9 bugs during port development — MRA transposed rebuild bug, ArithNCD proportion bug, and 7 Unicode byte-count bugs (all in the port, not latent Python original bugs) ✅
 - **Decision Log (+3)**: 18 non-trivial architectural decisions documented ✅
 
 ### Performance

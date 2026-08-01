@@ -36,7 +36,9 @@ ALGS = (
     textdistance.prefix,
     textdistance.postfix,
     textdistance.identity,
-    # textdistance.length,
+    textdistance.matrix,
+    # textdistance.length: excluded because Length measures length difference,
+    # not character similarity. It doesn't pass test_no_common_chars (returns 4, not 0).
 
     # numpy-based:
     # textdistance.gotoh,

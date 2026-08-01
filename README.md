@@ -8,7 +8,7 @@ A complete Rust port of [life4/textdistance](https://github.com/life4/textdistan
 
 Python's `textdistance` is a pure-Python library. The algorithms are correct but slow for large-scale use. Rust offers:
 
-- **77–1,788× faster** on edit-distance algorithms (criterion.rs benchmarks)
+- **2.7× to 38,960× faster** depending on algorithm (geometric mean: 64×, median: 9.2×)
 - **Zero runtime dependencies** — single 1.0MB binary, no Python interpreter needed
 - **Memory safety** — 0 unsafe blocks, zero panics on valid input
 - **Deterministic performance** — no GC pauses, no import overhead
@@ -59,16 +59,26 @@ Arithmetic NCD, RLE NCD, BWT-RLE NCD, BZ2 NCD, LZMA NCD, ZLIB NCD, Sqrt NCD, Ent
 ### Vector-based (7)
 Chebyshev, Minkowski, Manhattan, Euclidean, Mahalanobis, Correlation, Kulsinski
 
+## CLI Output Note
+
+The CLI returns **distance** for some algorithms and **similarity** for others, matching the Python original's `__call__` behavior:
+- **Returns distance**: hamming, levenshtein, damerau-levenshtein, bag, mra, editex, compression NCD algorithms
+- **Returns similarity**: jaro, jaro-winkler, strcmp95, mlipns, needleman-wunsch, smith-waterman, gotoh, token algorithms, sequence algorithms, simple algorithms
+
+This is consistent with the Python original where `Base.__call__()` returns distance and `BaseSimilarity.__call__()` returns similarity.
+
 ## Parity Results
 
 | Category | Result |
 |----------|--------|
-| CLI parity | **35/36** match Python exactly |
-| Adapter tests | **84/84** pass |
+| Adapter tests (Python vs Rust) | **84/84** pass |
 | Unit tests | **66/66** pass |
-| Fuzzer | **98.6%** match (7 divergences on 504 tests) |
+| Differential fuzzer | **99.2%** match (4 divergences on 528 tests) |
 
-The single CLI divergence (lzma-ncd) is due to using `lzma_rs` (Rust) vs Python's `lzma` module — different compressor library, same monotonicity.
+### Known Divergences (documented in DECISIONS.md)
+- **lzma-ncd**: Different compressor library (lzma_rs raw LZMA vs Python lzma XZ format). Monotonicity preserved. This is the single CLI output divergence.
+- **str-cmp95 (1 divergence)**: Unicode `'ß'.upper()` produces `'SS'` in Python but Rust's `.to_uppercase().next()` only takes the first `'S'`.
+- **ratcliff-obershelp (3 divergences)**: Python's `difflib.SequenceFinder` picks different LCSS than n-gram enumeration when there are ties.
 
 ## Performance
 
@@ -116,7 +126,7 @@ textdistance-rs/
 │       └── vector/               # 7 vector-based algorithms
 ├── fuzz/
 │   ├── fuzz_harness.py           # Differential fuzzer
-│   └── log.txt                   # 62s fuzz log (504 tests, 7 divergences)
+│   └── log.txt                   # 62s fuzz log (532 tests, 4 divergences)
 ├── bench/
 │   ├── methodology.md            # Benchmark methodology
 │   ├── results.json              # Criterion + Python comparison results

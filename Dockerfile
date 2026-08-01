@@ -1,7 +1,7 @@
 # Port Mortem — textdistance Python → Rust
 # One command build: docker build -t textdistance-rs . && docker run textdistance-rs
 
-FROM rust:1.77-slim as builder
+FROM rust:1.80-slim as builder
 
 WORKDIR /app
 COPY . .
@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+# NOTE: Python textdistance installed for test-time comparison only (parity verification).
+# The Rust port itself does NOT link against the Python runtime.
 RUN pip3 install textdistance
 
 COPY --from=builder /app/target/release/textdistance /usr/local/bin/textdistance

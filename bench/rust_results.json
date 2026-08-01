@@ -1,1 +1,12 @@
-{}
+{
+  "note": "Rust benchmark data is in bench/results.json (combined Python vs Rust). Raw criterion output is in bench/criterion_output.txt.",
+  "criterion_benchmarks": {
+    "edit/levenshtein_test_text": "81.5 ns",
+    "edit/hamming_test_text": "2.4 ns",
+    "edit/damerau_levenshtein_test_text": "69.2 ns",
+    "edit/jaro_test_text": "51.2 ns",
+    "edit/jaro_winkler_test_text": "51.3 ns"
+  },
+  "combined_results_file": "results.json",
+  "criterion_output_file": "criterion_output.txt"
+}
