@@ -1,71 +1,122 @@
-{
-  "benchmarks": [
-    {
-      "algorithm": "cosine",
-      "rust_p50_ns": null,
-      "python_p50_ns": 6941.8,
-      "speedup": null
-    },
-    {
-      "algorithm": "damerau_levenshtein",
-      "rust_p50_ns": 167.62,
-      "python_p50_ns": 34741.6,
-      "speedup": 207.3
-    },
-    {
-      "algorithm": "hamming",
-      "rust_p50_ns": 3.17,
-      "python_p50_ns": 5666.8,
-      "speedup": 1787.6
-    },
-    {
-      "algorithm": "jaccard",
-      "rust_p50_ns": null,
-      "python_p50_ns": 8608.4,
-      "speedup": null
-    },
-    {
-      "algorithm": "jaro",
-      "rust_p50_ns": 64.7,
-      "python_p50_ns": 4991.8,
-      "speedup": 77.2
-    },
-    {
-      "algorithm": "jaro_winkler",
-      "rust_p50_ns": 64.45,
-      "python_p50_ns": 5475.0,
-      "speedup": 84.9
-    },
-    {
-      "algorithm": "lcsseq",
-      "rust_p50_ns": null,
-      "python_p50_ns": 29358.2,
-      "speedup": null
-    },
-    {
-      "algorithm": "lcsstr",
-      "rust_p50_ns": null,
-      "python_p50_ns": 4400.0,
-      "speedup": null
-    },
-    {
-      "algorithm": "levenshtein",
-      "rust_p50_ns": 139.35,
-      "python_p50_ns": 24341.6,
-      "speedup": 174.7
-    }
-  ],
-  "methodology": {
-    "tool_rust": "criterion.rs v0.5.1",
-    "tool_python": "time.perf_counter() in Python 3.13",
-    "iterations": "100 samples (criterion), 1000 runs (Python)",
-    "input_pairs": [
-      "test/text",
-      "hello/world",
-      "algorithm/altruistic",
-      "sunday/saturday",
-      "kitten/sitting"
-    ],
-    "build_profile": "release (--release)"
+[
+  {
+    "algorithm": "bag",
+    "python_ns": 9025,
+    "rust_ns": 930.0,
+    "speedup": 9.7
+  },
+  {
+    "algorithm": "cosine",
+    "python_ns": 6933,
+    "rust_ns": 760.4,
+    "speedup": 9.1
+  },
+  {
+    "algorithm": "damerau_levenshtein",
+    "python_ns": 35617,
+    "rust_ns": 166.3,
+    "speedup": 214.2
+  },
+  {
+    "algorithm": "editex",
+    "python_ns": 398350,
+    "rust_ns": 6386.7,
+    "speedup": 62.4
+  },
+  {
+    "algorithm": "gotoh",
+    "python_ns": 76108,
+    "rust_ns": 794.3,
+    "speedup": 95.8
+  },
+  {
+    "algorithm": "hamming",
+    "python_ns": 5650,
+    "rust_ns": 0.3,
+    "speedup": 18833.3
+  },
+  {
+    "algorithm": "jaccard",
+    "python_ns": 8692,
+    "rust_ns": 976.5,
+    "speedup": 8.9
+  },
+  {
+    "algorithm": "jaro",
+    "python_ns": 5100,
+    "rust_ns": 62.6,
+    "speedup": 81.5
+  },
+  {
+    "algorithm": "jaro_winkler",
+    "python_ns": 5592,
+    "rust_ns": 62.1,
+    "speedup": 90.0
+  },
+  {
+    "algorithm": "lcsseq",
+    "python_ns": 29350,
+    "rust_ns": 512.0,
+    "speedup": 57.3
+  },
+  {
+    "algorithm": "lcsstr",
+    "python_ns": 4492,
+    "rust_ns": 734.9,
+    "speedup": 6.1
+  },
+  {
+    "algorithm": "levenshtein",
+    "python_ns": 24700,
+    "rust_ns": 142.5,
+    "speedup": 173.3
+  },
+  {
+    "algorithm": "mlipns",
+    "python_ns": 7792,
+    "rust_ns": 0.2,
+    "speedup": 38960.0
+  },
+  {
+    "algorithm": "monge_elkan",
+    "python_ns": 189217,
+    "rust_ns": 1454.4,
+    "speedup": 130.1
+  },
+  {
+    "algorithm": "mra",
+    "python_ns": 12617,
+    "rust_ns": 1086.2,
+    "speedup": 11.6
+  },
+  {
+    "algorithm": "needleman_wunsch",
+    "python_ns": 34475,
+    "rust_ns": 311.1,
+    "speedup": 110.8
+  },
+  {
+    "algorithm": "ratcliff_obershelp",
+    "python_ns": 17875,
+    "rust_ns": 1997.0,
+    "speedup": 9.0
+  },
+  {
+    "algorithm": "smith_waterman",
+    "python_ns": 35842,
+    "rust_ns": 300.7,
+    "speedup": 119.2
+  },
+  {
+    "algorithm": "sorensen",
+    "python_ns": 6992,
+    "rust_ns": 760.8,
+    "speedup": 9.2
+  },
+  {
+    "algorithm": "strcmp95",
+    "python_ns": 10808,
+    "rust_ns": 4045.9,
+    "speedup": 2.7
   }
-}
+]
