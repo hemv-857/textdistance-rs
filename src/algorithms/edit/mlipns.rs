@@ -1,5 +1,4 @@
-use super::hamming::Hamming;
-use crate::{Distance, Similarity};
+use crate::Similarity;
 
 pub struct MLIPNS {
     pub threshold: f64,
@@ -37,26 +36,30 @@ fn mlipns_impl(s1: &[char], s2: &[char], threshold: f64, max_mismatches: usize) 
         return 1.0;
     }
 
-    // If either sequence is empty, return 0 (matches Python behavior)
     if s1.is_empty() || s2.is_empty() {
         return 0.0;
     }
 
-    let ham = Hamming.distance(s1, s2) as usize;
-    let mut ham = ham;
-    let mut mismatches = 0;
-    let mut len = maxlen;
+    // MLIPNS: compare the shorter string against the prefix of the longer string
+    // of the same length. If the mismatch ratio is within threshold, return 1.0.
+    let (shorter, longer) = if s1.len() <= s2.len() {
+        (s1, s2)
+    } else {
+        (s2, s1)
+    };
 
-    while len > 0 && mismatches <= max_mismatches {
-        if 1.0 - (len as f64 - ham as f64) / len as f64 <= threshold {
-            return 1.0;
+    let mut mismatches = 0;
+    for i in 0..shorter.len() {
+        if shorter[i] != longer[i] {
+            mismatches += 1;
+            if mismatches > max_mismatches {
+                return 0.0;
+            }
         }
-        mismatches += 1;
-        ham = ham.saturating_sub(1);
-        len -= 1;
     }
 
-    if len == 0 {
+    let mismatch_ratio = mismatches as f64 / shorter.len() as f64;
+    if mismatch_ratio <= threshold {
         1.0
     } else {
         0.0

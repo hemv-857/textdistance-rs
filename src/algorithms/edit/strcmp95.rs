@@ -69,8 +69,7 @@ const SP_MX: &[(&str, &str)] = &[
 ];
 
 fn in_range(ch: char) -> bool {
-    let o = ch as u32;
-    o > 0 && o < 91
+    ('A'..='Z').contains(&ch) || ('0'..='9').contains(&ch)
 }
 
 fn strcmp95_impl(s1: &[char], s2: &[char], long_strings: bool) -> f64 {

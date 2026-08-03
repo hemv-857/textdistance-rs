@@ -1,50 +1,45 @@
 Differential Fuzz Log
-Duration: 15.5s
-Total tests: 252
-Divergences: 3
-Errors: 27
+Duration: 84.7s
+Total tests: 84
+Divergences: 2
+Errors: 9
 
-  hamming: 9 tests - OK
-  levenshtein: 9 tests - OK
-  damerau-levenshtein: 9 tests - OK
-  jaro: 9 tests - OK
-  jaro-winkler: 9 tests - OK
-  str-cmp95: 9 tests - OK
-  mlipns: 9 tests - OK
-  needleman-wunsch: 9 tests - OK
-  smith-waterman: 9 tests - OK
-  gotoh: 9 tests - OK
-  bag: 9 tests - OK
-  jaccard: 9 tests - OK
-  sorensen: 9 tests - OK
-  tversky: 9 tests - OK
-  overlap: 9 tests - OK
-  cosine: 9 tests - OK
-  tanimoto: 9 tests - OK
-  monge-elkan: 9 tests - OK
-  lcsseq: 9 tests - OK
-  lcsstr: 9 tests - OK
-  ratcliff-obershelp: 9 tests - FAIL (3 divs)
-  prefix: 9 tests - OK
-  postfix: 9 tests - OK
-  length: 9 tests - OK
-  identity: 9 tests - OK
-  matrix: 9 tests - OK
-  mra: 9 tests - OK
-  editex: 9 tests - OK
+  hamming: 3 tests - OK
+  levenshtein: 3 tests - OK
+  damerau-levenshtein: 3 tests - OK
+  jaro: 3 tests - OK
+  jaro-winkler: 3 tests - OK
+  str-cmp95: 3 tests - OK
+  mlipns: 3 tests - OK
+  needleman-wunsch: 3 tests - OK
+  smith-waterman: 3 tests - OK
+  gotoh: 3 tests - OK
+  bag: 3 tests - OK
+  jaccard: 3 tests - OK
+  sorensen: 3 tests - OK
+  tversky: 3 tests - OK
+  overlap: 3 tests - OK
+  cosine: 3 tests - OK
+  tanimoto: 3 tests - OK
+  monge-elkan: 3 tests - FAIL (2 divs)
+  lcsseq: 3 tests - OK
+  lcsstr: 3 tests - OK
+  ratcliff-obershelp: 3 tests - OK
+  prefix: 3 tests - OK
+  postfix: 3 tests - OK
+  length: 3 tests - OK
+  identity: 3 tests - OK
+  matrix: 3 tests - OK
+  mra: 3 tests - OK
+  editex: 3 tests - OK
 
-DIVERGENCE: ratcliff-obershelp
-  Input: ['YxEKmF9iKgVJo25zt2QSrUj5qN', 'e81LrN4ByEdQwhS8Alfr']
-  Python: 0.17391304347826086
-  Rust:   0.08695652173913043
+DIVERGENCE: monge-elkan
+  Input: ['HhnC8YOvY1g', 'HhnC8YOv1g']
+  Python: 0.09090909090909091
+  Rust:   1
 
-DIVERGENCE: ratcliff-obershelp
-  Input: ['erkP3bUOIDBjfVHxHrScpoEjQCTZ2WJOHvyYSTXXwM8MTiPbiR9D3rZzHG7O58UQrtOmOcDSA2UVr7IUNn4ssL2dQCrVp6sDGkcKqZCeKXhnlblaJ7Q9gHDxMlCzDdfLO285nyByDbyFMd6gtokUuMfv9EA7iy2nulxrVzWhdUIcpUm4tmPMkI6ZpIqNVoZdB32mmueOjkHNkNsEJinKeQxyRtrNRDorcZ2YhYhJWpv8k1P938GVmNDSQ5T52x4g9rTuNhfkQdn19SswDTqATv9FZ544PT2doisi3F8qf0dWjGNbr3Iq02v22m0nms3NsSC5p4KfsmxZMy6gB0aFac4MtD2Y1WfW4pnKZ7VRLjZDIcJ6IgF1i5rDuBk9D8PFmk4Hy6dsiZxrc6vYrt', 'i0FmeCwS4Jhkkfb4iBVsOCimLJXevWoKUwp9NA1TK5aDsvzz6KCAovFounzeoGTIWxQSql1yJNtdVO0Rn8NUtvejwS59Rei0tWt5BUt4849LzhKUYoqhfLzHDxkzRHXoEoLFHxwXFfaNE1zr2z8rpwMLKI5YK9Q0B2gbSpKwp2P0U1UQxXrw7wsXoufF6BMbR7OjdAE5czyG6FgBlM79EOTAyIZ96txCtkikHbFpUpbSlELFWrmYNI8PiJ4PPqvt0bvsDoS81N1eI7ttGNBqvycki55ZcV175O4sM359ckZn8B20nelZRvTfs0zGbD5QYFdKICAAqjSO3VqWt0FeMUFdNOseaGralGyikGkBn0wj4jc']
-  Python: 0.10923276983094929
-  Rust:   0.09102730819245773
-
-DIVERGENCE: ratcliff-obershelp
-  Input: ['VVQZKTAAHebAHr9L3JEoFOilbkwsEnFUb8QHbHfqrHHiNsMWYwDNv1qQCjVMpqBbhCbQWRrvqfDjIdUziwLUJf5L3dWE5y2y5GNuxvnpMTnchYkOxMCy6UzaiYU87avKYtcTcGl8B7WY53DLxmcUwq2EmsgbOpx5KxU2nN6NLmgURjqNRTLUFIqlnWA6YHiDpn6yWOSIzmESG7NyoKKsJ7gWi8nxTy8KfryajFDEgsosgdul0sFTw0zHyaXpSV0rWUc6MTmchdJoCYhFA9RtwZ3OhjuWoHuP8xeH9xHOioWnkhE9hfN5I3mPoIohLFd7jMsfOPU88HOAK5pO8izK9ahMLSzIRMEev2mkFnaTVm', 'ELFcQlKkPpV30aUBw9mVZN6OA0w3MzjZSq3Pb7aSFIBrBg8vS8HhToDhrBaJepV8Haq4t6fSjjmZKhHRcLrUTIxMaSMJxO2oQey3lIkEX3J99MovNiIv7Vb4zUwyaWjkJKAqFYwNeQ3e7BrB8JNK1ef2FhideTaWY3apD6pGXG2jAnXIF6cgTEp0bxDO9r0xAxwPFGqI4DfHJUQVmfrmF2S1exErKEJHfwZFOJmFhppFonnQoOP0o6aRqh99iYtapwMUkKJtZScOEa08xMlycVYbMkNtskh5IcJNYmUzUB5AGEgxUB7iGbdOcjHhs8TV8SVYLHjELtN0rfq8KoUZCPihkGiHGprqUk2kb2kggX7mcPzzRDAr1rp0CGnxRzORfcrbqHvNyqSHBJGlXI25mRCgTb859zCiUjc4zS84jya14fexQXqLLTh4BYPGl5dVkZ']
-  Python: 0.09359605911330049
-  Rust:   0.08866995073891626
+DIVERGENCE: monge-elkan
+  Input: ['Xl0ySpch76V8V6hkJSFFcsynrdP1uazZnLhEpZfZGlxxI6rszuwxIIFy0Ma0k7Dpi9Jwv5iHy6seNbOHazdNCvjDIQ9Px6jNSNUxoQAXp20Bnne04ZfgBBONoVToCsaPKiqrVlkCo1e3NW4dBkdzbaYdcVDo54YC1jIoe44aNalpGme92cICZaWXOlbmVFypo1GsN3rXzt49fmyUmTpfBuyK6vXfOYK9RTFRCav7iAa7y5diuMCxU4j0hGUWixFQrk5tdAVK6BSNS0FhCmrF5HIcnwSjYoWniEgMYQbPKCK2lTfEyI316RHD6TDm5aN55ZqB5cVNpQAWu1Oo', 'uJTHnWmaPL557PBpqvD2Mz7MpA5CRC622ziBPrLUw028NYKaaikeNU3ukMJV0M4nGmaiCnHKgIdbbBPKxpg40EOd7njwqIrNpJVvsZpbDu3E1JiSXgPDCzIY8Xc9mIYs0UaMGoFCAa6TbQk9NubB8tBDUnErCqItuM3LqKAxDKDZ8bwcXspeuTtPDP8MTwNlpPu5LYn9JYS1ZOZaywFHH6rtg6PMSRklVHLno6XnChrrdfmJWfdJWMjJwO3iH0iC6a1Y1m1ut31ZWmb0mN5gbara35dcNuJHVu0yTuKRajf11KT8Pxl8jwvWLfXfWHwj']
+  Python: 0.002976190476190476
+  Rust:   1
 

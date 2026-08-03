@@ -1,7 +1,17 @@
 {
   "total": 90,
-  "passed": 90,
-  "failed": 0,
-  "pass_rate": "100.0%",
-  "errors": []
+  "passed": 89,
+  "failed": 1,
+  "pass_rate": "98.9%",
+  "errors": [
+    {
+      "algorithm": "monge_elkan",
+      "input": [
+        "elephant",
+        "hippo"
+      ],
+      "python": "0.03125",
+      "rust": "0.25"
+    }
+  ]
 }

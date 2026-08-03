@@ -38,9 +38,8 @@ impl MongeElkan {
         if count == 0 {
             return 0.0;
         }
-        // Python: return sum(maxes) / len(seq) / len(maxes)
-        // maxes has len(chars1) entries, seq has len(chars1)
-        total / count as f64 / count as f64
+        // Correct Monge-Elkan: sum(max_similarities) / count
+        total / count as f64
     }
 
     pub fn distance(&self, s1: &str, s2: &str) -> f64 {
