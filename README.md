@@ -1,5 +1,7 @@
 # textdistance-rs
 
+<a href="https://github.com/hemv-857/textdistance-rs/actions/workflows/ci.yml"><img src="https://github.com/hemv-857/textdistance-rs/actions/workflows/ci.yml/badge.svg" alt="textdistance-rs CI"></a> <a href="https://github.com/hemv-857/textdistance-rs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a> <img src="https://img.shields.io/badge/Rust-DEA584.svg" alt="Rust">
+
 **Port Mortem Submission** — Track D: Python → Rust
 
 A complete Rust port of [life4/textdistance](https://github.com/life4/textdistance), a library with 43 algorithms for computing distance between sequences.
