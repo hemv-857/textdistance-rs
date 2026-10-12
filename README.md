@@ -153,6 +153,10 @@ See [DECISIONS.md](DECISIONS.md) for full details. Highlights:
 - **Trait-based design** — `Distance`, `Similarity`, `VectorDistance` traits for clean abstraction
 - **BigInt arithmetic** — ArithNCD uses `num-rational::BigRational` for exact probability computation
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 MIT — same as original.
